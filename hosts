@@ -1,0 +1,27 @@
+#微信公众号(只禁③广告位还在只是不显示广告图片&视频)目前已经完全没广告且评论区还在
+127.0.0.1 wxa.wxs.qq.com
+127.0.0.1 wxsnsdy.wxs.qq.com
+127.0.0.1 wxsnsdythumb.wxs.qq.com
+127.0.0.1 ad.wx.com
+127.0.0.1 bc.weixin.qq.com
+127.0.0.1 channels.weixin.qq.com
+127.0.0.1 badjs.weixinbridge.com
+#QQ浏览器
+127.0.0.1 kde.qq.com  #小说？
+127.0.0.1 ug.qbimg.qq.com  #开屏和首页下面的弹出式伸缩的广告图。
+#AI在网上搜集的QQ开屏、横幅广告
+127.0.0.1 mqq.qq.com
+127.0.0.1 ssp.qq.com
+127.0.0.1 ad.qq.com
+127.0.0.1 ad.qun.qq.com
+127.0.0.1 adping.qq.com
+127.0.0.1 adsclick.qq.com
+127.0.0.1 adsfile.qq.com
+127.0.0.1 adshmct.qq.com
+127.0.0.1 adshmmsg.qq.com
+127.0.0.1 adslvfile.qq.com
+127.0.0.1 adslvseed.qq.com
+127.0.0.1 adsqqclick.qq.com
+127.0.0.1 jingjia.qq.com
+127.0.0.1 rich.qq.com
+127.0.0.1 union.qq.com

@@ -28,6 +28,16 @@
 127.0.0.1 rich.qq.com
 127.0.0.1 union.qq.com
 
+#cn.bing.com加速(国区bing)
+202.89.233.101 cn.bing.com
+::1 cn.bing.com
+
+#谷歌翻译
+220.181.174.98 translate.google.cn
+120.253.253.98 translate.google.cn
+114.250.67.34 translate.google.cn
+180.163.151.34 translate.google.cn
+
 #GitHub加速
 20.205.243.166 github.com
 185.199.111.153 github.io

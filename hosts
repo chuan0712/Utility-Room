@@ -30,13 +30,11 @@
 
 #cn.bing.com加速(国区bing)
 202.89.233.101 cn.bing.com
-::1 cn.bing.com
 
 #谷歌翻译
-220.181.174.98 translate.google.cn
-120.253.253.98 translate.google.cn
-114.250.67.34 translate.google.cn
-180.163.151.34 translate.google.cn
+216.239.32.40 translate.googleapis.com
+216.239.32.40 translate.google.com
+216.239.32.40 translate-pa.googleapis.com
 
 #GitHub加速
 20.205.243.166 github.com
@@ -53,10 +51,10 @@
 185.199.110.133 raw.github.com
 185.199.110.133 raw.githubusercontent.com
 185.199.110.133 objects.githubusercontent.com
-185.199.110.133 media.githubusercontent.com
+185.199.110.133 20.205.243.166
 185.199.110.133 cloud.githubusercontent.com
 185.199.110.133 desktop.githubusercontent.com
- 185.199.110.133 user-images.githubusercontent.com
+185.199.110.133 user-images.githubusercontent.com
 185.199.110.133 avatars.githubusercontent.com
 185.199.110.133 avatars0.githubusercontent.com
 185.199.110.133 avatars1.githubusercontent.com

@@ -30,8 +30,9 @@
 
 #cn.bing.com加速(国区bing)
 202.89.233.101 cn.bing.com
+202.89.233.100 cn.bing.com
 
-#谷歌翻译
+#谷歌翻译(国区可用)
 216.239.32.40 translate.googleapis.com
 216.239.32.40 translate.google.com
 216.239.32.40 translate-pa.googleapis.com

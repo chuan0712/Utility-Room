@@ -55,38 +55,13 @@
 182.239.104.89 bigota.d.miui.com
 182.239.104.89 hugeota.d.miui.com
 
-#cn.bing.com加速(国区bing)
-202.89.233.101 cn.bing.com
-202.89.233.100 cn.bing.com
-
 #谷歌翻译(国区可用)
 216.239.32.40 translate.googleapis.com
 216.239.32.40 translate.google.com
 216.239.32.40 translate-pa.googleapis.com
 
 #GitHub加速
-20.205.243.166 github.com
-185.199.111.153 github.io
-20.205.243.168 api.github.com
-20.205.243.166 gist.github.com
-20.43.185.14 github.dev
-140.82.112.18 github.community
-140.82.113.21 collector.github.com
-140.82.113.26 alive.github.com
-140.82.112.25 live.github.com
-185.199.110.154 github.githubassets.com
-185.199.110.153 githubstatus.com
-185.199.110.133 raw.github.com
-185.199.110.133 raw.githubusercontent.com
-185.199.110.133 objects.githubusercontent.com
-185.199.110.133 20.205.243.166
-185.199.110.133 cloud.githubusercontent.com
-185.199.110.133 desktop.githubusercontent.com
-185.199.110.133 user-images.githubusercontent.com
-185.199.110.133 avatars.githubusercontent.com
-185.199.110.133 avatars0.githubusercontent.com
-185.199.110.133 avatars1.githubusercontent.com
-185.199.110.133 avatars2.githubusercontent.com
-185.199.110.133 avatars3.githubusercontent.com
-185.199.110.133 avatars4.githubusercontent.com
-185.199.110.133 avatars5.githubusercontent.com
+20.205.243.166  github.com
+185.199.108.133 raw.github.com
+185.199.109.133 raw.github.com
+185.199.111.133 raw.github.com

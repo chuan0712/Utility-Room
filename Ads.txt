@@ -21,3 +21,7 @@ www.itdog.cn##.pcoded-header.navbar
 
 ! --123云盘--  2024年8月14日
 www.123pan.com##.layout-dom > div
+
+! --微软网站365--  2024年8月18日
+support.microsoft.com###rail-column
+support.microsoft.com###ocFooterWrapper

@@ -100,9 +100,9 @@
 127.0.0.1 data.sec.miui.com
 127.0.0.1 auth.be.sec.miui.com  #权限云控？
 #这应该是安装验证，建议屏蔽
-#127.0.0.1 api-installer.pt.xiaomi.com
-#127.0.0.1 preview-api.installer.xiaomi.com
-#127.0.0.1 test-api-installer.pt.xiaomi.com
+127.0.0.1 api-installer.pt.xiaomi.com
+127.0.0.1 preview-api.installer.xiaomi.com
+127.0.0.1 test-api-installer.pt.xiaomi.com
 #安全相关
 127.0.0.1 adv.sec.intl.miui.com
 127.0.0.1 api.miui.security.xiaomi.com

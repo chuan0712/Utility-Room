@@ -45,6 +45,10 @@
 127.0.0.1 images.pinduoduo.com
 127.0.0.1 t-dsp.pinduoduo.com
 
+#mt管理器
+127.0.0.1 umeng.com
+127.0.0.1 safe.mt2.cn
+
 #小米广告
 127.0.0.1 ad.mi.com
 127.0.0.1 ad.xiaomi.com

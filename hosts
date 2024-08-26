@@ -180,7 +180,6 @@
 
 #GitHub加速
 20.205.243.166   github.com
-185.199.108.133  raw.github.com
 
 #FCM推送
 #fcm会优先连接2404其次2607，alt1~alt8顺序是这样的

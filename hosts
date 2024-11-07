@@ -56,14 +56,12 @@
 182.239.104.89 bigota.d.miui.com
 182.239.104.89 hugeota.d.miui.com
 #微软翻译
-20.189.109.69  api-edge.cognitive.microsofttranslator.com
-204.79.197.239 edge.microsoft.com
+#20.189.109.69  api-edge.cognitive.microsofttranslator.com
+#204.79.197.239 edge.microsoft.com
 #谷歌翻译(国区可用)
 216.239.32.40  translate.googleapis.com
 216.239.32.40  translate.google.com
 216.239.32.40  translate-pa.googleapis.com
-#GitHub加速
-20.205.243.166   github.com
 #mt管理器
 127.0.0.1 umeng.com
 127.0.0.1 safe.mt2.cn

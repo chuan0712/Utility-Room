@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! 自用去广告规则。常用网站精选。
+! Title: 自用去广告Adblock规则
 ! 地址：https://gh.llkk.cc/https://raw.githubusercontent.com/G-chuan2024/Ads/main/Ads.txt
 
 ! 百度网盘 2024年8月17日

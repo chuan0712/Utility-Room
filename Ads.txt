@@ -1,39 +1,3 @@
 [Adblock Plus 2.0]
 ! Title: 自抓
 ! 地址：https://gh.llkk.cc/https://raw.githubusercontent.com/G-chuan2024/Ads/main/Ads.txt
-
-! 百度网盘 2024年8月17日
-! 1.顶栏 2.侧栏
-pan.baidu.com##.wp-s-header
-pan.baidu.com##.wp-s-aside-nav__main
-
-! CSDN     2024年8月17日
-! 右下角举报按钮
-blog.csdn.net##a.option-box:nth-of-type(1)
-
-! 腾讯新闻  2024年8月17日
-view.inews.qq.com##.bottom-bar_buttonWrap__NXBe-
-
-! 腾讯云   2024年8月21日
-cloud.tencent.com##.cdc-top-ad
-cloud.tencent.com##.com-widget-operations
-cloud.tencent.com##.show-ad.cdc-header--block.cdc-header
-cloud.tencent.com##.cdc-layout__side
-
-! ITDOG  IP测速  2024年8月12日
-! 1.广告 2.顶栏
-www.itdog.cn##.gg_link
-www.itdog.cn##.pcoded-header.navbar
-
-! 123云盘    2024年8月14日
-www.123pan.com##.layout-dom > div
-
-! 微软网站365    2024年8月18日
-support.microsoft.com###rail-column
-support.microsoft.com###ocFooterWrapper
-
-! 电信天翼云盘   2024年8月19日
-cloud.189.cn##.advertising-mask
-
-! GitHub      2024年8月18日
-github.com##.border-bottom.mb-5.feed-right-sidebar .js-notice

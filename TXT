@@ -49,58 +49,14 @@ bing.com,cn.bing.net##li.b_ans:not(:has(h2))
 bing.com,cn.bing.net##.pa_sb
 
 ! 123云盘
-! 隐藏618促销banner
-123pan.com##div.mfy-main-layout__head
-！隐藏新年促销banner
-www.123684.com##.sider-member-btn
-! 隐藏同步空间new标签
-123pan.com##img.new-menu-item-image
-! 隐藏618vip促销信息
-123pan.com##div.activity-box
-! 隐藏商城信息
-123pan.com##div.sider-member-btn
-! 隐藏网盘数据转入hot标签
-123pan.com##img.special-menu-item-container-migration--label
-! 隐藏上传列表的广告
-123pan.com##div.uppy-Dashboard-slowSpeed-banner.show
-! 隐藏公告
-123pan.com##div.notice-box
+! 2025年2月9日 https://www.123pan.com
+www.123pan.com##.sider-member-btn
+www.123pan.com##.mfy-main-layout__head
 
 ! 百度网盘 (Baidu Netdisk)
-! 隐藏开屏引导
-pan.baidu.com##div.nd-operate-guidance
-! 隐藏优惠红点
-pan.baidu.com##span.wp-s-header__vip-btn-tip-text
-! 隐藏礼物图标
-pan.baidu.com##div.wp-s-header__game-entry.u-popover__reference
-! 隐藏消息红点
-pan.baidu.com##sup.u-badge__content.is-dot
-! 隐藏开通会员按钮
-pan.baidu.com##span.wp-s-header-user__tooltip.wp-header-user__tooltip-display
-! 隐藏年中活动
-pan.baidu.com##a#web-header-text-s-72.inline-block-v-middle.web-header-ad-item.u-popover__reference
-! 隐藏企业团队
-pan.baidu.com##p.wp-s-header-user__create-team-title.u-popover__reference
-! 隐藏小助手
-pan.baidu.com##div.nd-chat-ai-btn__container
-! 隐藏设备管理开屏
-pan.baidu.com##div.module-device-box.norecognition
-! 隐藏开屏全屏蒙版
-pan.baidu.com##div.module-device-mask
-! 隐藏开屏全屏蒙版
-pan.baidu.com##div.module-cardtip-mask
-! 隐藏卡包开屏
-pan.baidu.com##div.module-cardtip-box
-! 隐藏共享蒙版
-pan.baidu.com##div.module-canvas
-! 隐藏共享开屏
-pan.baidu.com##div#dialog.dialog-dialog1.guide-share-dir-tip.dialog-gray
-! 隐藏vip提示
-pan.baidu.com##span.vip-center-tip
-! 隐藏红点
-pan.baidu.com##span.newIcon
-! 隐藏企业认证入口
-pan.baidu.com##div.wp-side-options-btn
+! 2025年2月9日 https://pan.baidu.com
+pan.baidu.com##.wp-s-header
+pan.baidu.com##.wp-s-aside-nav__main
 
 ! 百度百科 (Baidu Baike)
 ! 隐藏小红点

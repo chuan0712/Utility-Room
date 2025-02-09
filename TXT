@@ -1,49 +1,8 @@
 [Adblock Plus 2.0]
-! Title: Custom Rules - 2025-02-04
+! Title: 返璞归真 - 2025-02-04
 ! Description: Custom rules to block unwanted elements.
 ! Homepage: (https://gh.llkk.cc/https://raw.githubusercontent.com/G-chuan2024/Ads/main/TXT可选，可以填写您个人网站或规则来源)
 ! 注意：部分规则可能需要根据实际情况进行调整。
-
-! 测速网 (Speedtest)
-! 移除URL参数，防止链接跳转
-||speedtest.cn^$removeparam=mall_nav,enterprise_service
-! 隐藏导航栏的企业服务
-speedtest.cn##li.nav-item.nav-enterprise-service.mall_nav
-! 隐藏签到图标
-speedtest.cn##div.sign-icon
-! 隐藏网络模块
-speedtest.cn##div.network-module
-! 隐藏顶部下载按钮
-speedtest.cn##div.top-download
-! 隐藏测速App推广
-speedtest.cn##div#speedApp.speed-app
-! 隐藏底部栏
-speedtest.cn##footer.footer-container
-! 隐藏加速提示
-speedtest.cn##div#speedUpNotice.notice
-! 隐藏弹窗
-speedtest.cn##div.sus-window
-! 隐藏阴影
-speedtest.cn##div.shade
-! 隐藏指针
-speedtest.cn##img.pointer
-! 隐藏底部广告位
-speedtest.cn##ins.adsbygoogle
-! 隐藏顶部栏位
-speedtest.cn##div.header-container
-! 隐藏测速推荐
-speedtest.cn##div.speedtest-recommend
-! 隐藏费用提示
-speedtest.cn##div.fee-tip
-! 隐藏测速运行状态
-speedtest.cn##div.speed-tisu-run-status
-! 隐藏无用的下边栏元素
-speedtest.cn##div.neighbors-index
-speedtest.cn##div.toolbox
-speedtest.cn##div.insight-wrap
-speedtest.cn##div.sponsor
-! 隐藏提示信息
-speedtest.cn##div.tisu-on
 
 ! Github
 ! 隐藏通知信息
@@ -85,10 +44,15 @@ v.qq.com##txpdiv.txp_zt_content
 ! 隐藏小红点
 bing.com##img#redDotDisplay
 bing.com##circle
+！搜索广告
+bing.com,cn.bing.net##li.b_ans:not(:has(h2))
+bing.com,cn.bing.net##.pa_sb
 
 ! 123云盘
 ! 隐藏618促销banner
 123pan.com##div.mfy-main-layout__head
+！隐藏新年促销banner
+www.123684.com##.sider-member-btn
 ! 隐藏同步空间new标签
 123pan.com##img.new-menu-item-image
 ! 隐藏618vip促销信息
@@ -101,18 +65,6 @@ bing.com##circle
 123pan.com##div.uppy-Dashboard-slowSpeed-banner.show
 ! 隐藏公告
 123pan.com##div.notice-box
-
-! 文心一言
-! 隐藏VIP充值入口
-yiyan.baidu.com##div.NQlBLxO4
-! 隐藏开通VIP的按钮
-yiyan.baidu.com##div.PB57KCF0
-yiyan.baidu.com##div._nXcu3H5
-! 隐藏会员专享提示
-yiyan.baidu.com##div.ant-tooltip-inner
-! 隐藏弹窗
-yiyan.baidu.com##div.ant-modal-wrap.mQXbF6Ga.ant-modal-centered
-yiyan.baidu.com##div.r7f2OWld
 
 ! 百度网盘 (Baidu Netdisk)
 ! 隐藏开屏引导
@@ -164,24 +116,7 @@ baike.baidu.com##a.topA_skC9T
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
 
-! 果核剥壳
-ghxi.com##section#modules-13.section.wpcom-modules.modules-tjnr.container
-ghxi.com##section#modules-27.wpcom-modules.modules-category-posts
-ghxi.com##section#modules-23.wpcom-modules.modules-image
-ghxi.com##section#modules-24.wpcom-modules.modules-text
-ghxi.com##section#modules-18.section.wpcom-modules.modules-special
-ghxi.com##section#modules-26.section.wpcom-modules.modules-carousel-posts
-ghxi.com##li.item.item-sticky
-ghxi.com##div#wpcom-image-ad-11.widget.widget_image_ad
-ghxi.com##div#wpcom-image-ad-8.widget.widget_image_ad
-ghxi.com##div#wpcom-html-ad-4.widget.widget_html_ad
-ghxi.com##div#wpcom-image-ad-10.widget.widget_image_ad
-ghxi.com##div#wpcom-image-ad-2.widget.widget_image_ad
-ghxi.com##div#wpcom-image-ad-7.widget.widget_image_ad
-ghxi.com##div.action-item.j-share
-ghxi.com##div.wpcom_ad_wrap
-ghxi.com##div.wwads-cn.wwads-vertical
-ghxi.com##div.modules-image-inner.image-align-center
+
 
 !哔哩哔哩
 bilibili.com##img.loc-mc-box__pic
@@ -204,29 +139,3 @@ bilibili.com##a#bannerAd.ad-report.ad-floor-exp
 bilibili.com##div.ad-floor-cover.b-img
 bilibili.com##div#activity_vote.activity-m-v1.act-now
 bilibili.com##div.eva-banner
-
-!Greasyfork
-greasyfork.org##div.ad-content
-greasyfork.org##div#aswift_3_host
-greasyfork.org##div#aswift_2_host
-greasyfork.org##div#aswift_1_host
-greasyfork.org##div.grippy-host
-greasyfork.org##div#script-show-info-ad.ad.ad-ga
-greasyfork.org##div#script-show-info-ad.ad.ad-ea
-greasyfork.org##ins.adsbygoogle.adsbygoogle-noablate
-greasyfork.org##div.ns-ipk34-e-1column-container.banner-large-board.flex-filler
-greasyfork.org##div.creative.end-card
-
-!AGE动漫
-agefans.net##div.global_notice_wrapper
-agefans.net##a.nav-link.nav-download-link
-agefans.net##div#notice_box
-agefans.net##div.extra-box.index-app-dl
-agefans.net##div.art-state
-
-!樱花次元
-imomoe.io##div.app-popup.myc
-imomoe.io##img.tutu
-imomoe.io##div.ads.ads-all
-imomoe.io##div.ads.ads-sw
-imomoe.io##div.hl-player-notice.hl-this-box.hl-text-white.fix

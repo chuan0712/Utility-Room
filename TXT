@@ -1,97 +1,30 @@
 [Adblock Plus 2.0]
 ! Title: 返璞归真 - 2025-02-04
 ! Description: Custom rules to block unwanted elements.
-! Homepage: (https://gh.llkk.cc/https://raw.githubusercontent.com/G-chuan2024/Ads/main/TXT可选，可以填写您个人网站或规则来源)
+! Homepage: (https://raw.githubusercontent.com/G-chuan2024/Ads/main/TXT)
 ! 注意：部分规则可能需要根据实际情况进行调整。
 
 ! Github
 ! 隐藏通知信息
 github.com##div.js-notice
 
-! 简书 (Jianshu)
-! 隐藏遮罩层
-jianshu.com##div._23ISFX-mask
-! 隐藏弹窗主体
-jianshu.com##div._23ISFX-body
 
 ! 知乎 (Zhihu)
-! 隐藏推荐关注
-zhihu.com##div.Card.css-173vipd
-! 隐藏贴片广告1
-zhihu.com##a.Business-Card-PcRightBanner-link
-! 隐藏分类推荐
-zhihu.com##div.Card.GlobalSideBar-category
-zhihu.com##div.AdvertImg.AdvertImg--isLoaded.Business-Card-PcRightBanner-img
-! 隐藏贴片广告2
-zhihu.com##div.Pc-card.Card
-! 隐藏Feed流广告
-zhihu.com##div.Pc-feedAd-container
-
-! 腾讯视频 (Tencent Video)
-! 隐藏全屏视频展示
-v.qq.com##div.focus-wrap.large-focus
-! 隐藏VIP入口
-v.qq.com##div.quick_item.quick_vip
-! 隐藏游戏入口
-v.qq.com##div.quick_item.quick_games
-! 隐藏关闭按钮
-v.qq.com##div.close-btn
-! 隐藏专题
-v.qq.com##txpdiv.txp_zt
-v.qq.com##txpdiv.txp_zt_content
-
-! 必应 (Bing)
-! 隐藏小红点
-bing.com##img#redDotDisplay
-bing.com##circle
-！搜索广告
-bing.com,cn.bing.net##li.b_ans:not(:has(h2))
-bing.com,cn.bing.net##.pa_sb
+! 2025年3月17日 https://zhuanlan.zhihu.com
+zhuanlan.zhihu.com##.ContentItem-actions
 
 ! 123云盘
 ! 2025年2月9日 https://www.123pan.com
 www.123pan.com##.sider-member-btn
 www.123pan.com##.mfy-main-layout__head
 
+
 ! 百度网盘 (Baidu Netdisk)
 ! 2025年2月9日 https://pan.baidu.com
 pan.baidu.com##.wp-s-header
 pan.baidu.com##.wp-s-aside-nav__main
 
-! 百度百科 (Baidu Baike)
-! 隐藏小红点
-baike.baidu.com##span.discussionNum_yWlrp
-! 隐藏礼物图标
-baike.baidu.com##div.module-icon.index-module_taskLogo__71Tj5
-! 隐藏挑战赛
-baike.baidu.com##div.index-module_drawerHand__aRhcO
-! 隐藏报考入口
-baike.baidu.com##a.topA_skC9T
 
 ! 蓝奏云
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
-
-
-
-!哔哩哔哩
-bilibili.com##img.loc-mc-box__pic
-bilibili.com##div.open-screen-bg
-bilibili.com##div.loc-mc-box
-bilibili.com##li.v-popover-wrap.left-loc-entry
-bilibili.com##a.download-entry.download-client-trigger
-bilibili.com##div.vip-wrap
-bilibili.com##div.vip-entry-desc
-bilibili.com##p.vip-entry-desc
-bilibili.com##p.vip-entry-desc-subtitle
-bilibili.com##div.vip-entry-btn
-bilibili.com##div.adblock-tips
-bilibili.com##div.vip-entry-containter
-bilibili.com##div#notice
-bilibili.com##div.reply-notice
-bilibili.com##a.ad-report.video-card-ad-small
-bilibili.com##div#slide_ad.slide-ad-exp
-bilibili.com##a#bannerAd.ad-report.ad-floor-exp
-bilibili.com##div.ad-floor-cover.b-img
-bilibili.com##div#activity_vote.activity-m-v1.act-now
-bilibili.com##div.eva-banner

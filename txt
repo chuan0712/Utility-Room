@@ -4,6 +4,10 @@
 ! Homepage: (https://raw.githubusercontent.com/G-chuan2024/Ads/main/TXT)
 ! 注意：部分规则可能需要根据实际情况进行调整。
 
+! 知乎 (Zhihu)
+! 2025年3月17日 https://zhuanlan.zhihu.com
+zhuanlan.zhihu.com##.ContentItem-actions
+
 ! Github
 ! 隐藏通知信息
 github.com##div.js-notice

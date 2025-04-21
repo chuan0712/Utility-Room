@@ -8,23 +8,26 @@
 ! 隐藏通知信息
 github.com##div.js-notice
 
-
-! 知乎 (Zhihu)
-! 2025年3月17日 https://zhuanlan.zhihu.com
-zhuanlan.zhihu.com##.ContentItem-actions
-
 ! 123云盘
 ! 2025年2月9日 https://www.123pan.com
 www.123pan.com##.sider-member-btn
 www.123pan.com##.mfy-main-layout__head
-
 
 ! 百度网盘 (Baidu Netdisk)
 ! 2025年2月9日 https://pan.baidu.com
 pan.baidu.com##.wp-s-header
 pan.baidu.com##.wp-s-aside-nav__main
 
-
 ! 蓝奏云
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
+
+！B站
+www.bilibili.com##.adblock-tips
+www.bilibili.com###placeholder
+search.bilibili.com##.search-panel
+
+！outlook
+! 2024年12月23日 https://outlook.live.com
+outlook.live.com##.DLvHz.YmHO2.ypzld.IjQyD.DVTER.iIsOF.lHRXq.kk1xx
+outlook.live.com##.LBktY > .GssDD

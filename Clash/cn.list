@@ -1,10 +1,13 @@
-#123云盘
-- DOMAIN-SUFFIX,123pan.com
-- DOMAIN-SUFFIX,123pan.cn
-- DOMAIN-SUFFIX,123684.com
-- DOMAIN-SUFFIX,123865.com
-- DOMAIN-SUFFIX,123952.com
-- DOMAIN-SUFFIX,123912.com
-#jsdelivr
-- DOMAIN-SUFFIX,testingcf.jsdelivr.net
-- DOMAIN-SUFFIX,cdn.jsdelivr.net
+# 123 云盘相关域名
+DOMAIN-SUFFIX,123pan.com
+DOMAIN-SUFFIX,123pan.cn
+DOMAIN-SUFFIX,123684.com
+DOMAIN-SUFFIX,123865.com
+DOMAIN-SUFFIX,123952.com
+DOMAIN-SUFFIX,123912.com
+
+# jsDelivr 节点域名
+DOMAIN-SUFFIX,testingcf.jsdelivr.net
+DOMAIN-SUFFIX,cdn.jsdelivr.net
+DOMAIN-SUFFIX,fastly.jsdelivr.net
+DOMAIN-SUFFIX,abc.jsdelivr.net

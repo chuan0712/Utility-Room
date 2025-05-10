@@ -1,19 +1,21 @@
-# 123 云盘相关域名
-- DOMAIN-SUFFIX,123pan.com
-- DOMAIN-SUFFIX,123pan.cn
-- DOMAIN-SUFFIX,123684.com
-- DOMAIN-SUFFIX,123865.com
-- DOMAIN-SUFFIX,123952.com
-- DOMAIN-SUFFIX,123912.com
+payload:
+  # 123 云盘相关域名
+  - "DOMAIN-SUFFIX,123pan.com,DIRECT"
+  - "DOMAIN-SUFFIX,123pan.cn,DIRECT"
+  - "DOMAIN-SUFFIX,123684.com,DIRECT"
+  - "DOMAIN-SUFFIX,123865.com,DIRECT"
+  - "DOMAIN-SUFFIX,123952.com,DIRECT"
+  - "DOMAIN-SUFFIX,123912.com,DIRECT"
+  
+  # 蓝奏云主页
+  - "DOMAIN-SUFFIX,woozooo.com,DIRECT"
+  
+  # jsDelivr 反代域名
+  - "DOMAIN-SUFFIX,testingcf.jsdelivr.net,PROXY"
+  - "DOMAIN-SUFFIX,cdn.jsdelivr.net,PROXY"
+  - "DOMAIN-SUFFIX,fastly.jsdelivr.net,PROXY"
+  - "DOMAIN-SUFFIX,abc.jsdelivr.net,PROXY"
+  
+  # 青柠起始页
+  - "DOMAIN-SUFFIX,limestart.cn,DIRECT"
 
-# 蓝奏云主页
-- woozooo.com
-
-# jsDelivr 反代域名
-- DOMAIN-SUFFIX,testingcf.jsdelivr.net
-- DOMAIN-SUFFIX,cdn.jsdelivr.net
-- DOMAIN-SUFFIX,fastly.jsdelivr.net
-- DOMAIN-SUFFIX,abc.jsdelivr.net
-
-# 青柠起始页
-- limestart.cn

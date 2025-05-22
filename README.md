@@ -4,5 +4,5 @@
 
 
 #### 规则订阅地址：
-浏览器 https://raw.githubusercontent.com/G-chuan2024/Utility-Room/main/Ads/Adblock
+浏览器 https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Ads/Adblock
 

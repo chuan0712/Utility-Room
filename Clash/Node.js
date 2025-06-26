@@ -123,7 +123,7 @@ config["proxy-groups"] = [
   //生成rule-providers配置。
   config["rule-providers"] = {
     cn:        createRuleProvider("cn", "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"),
-    Ads:       createRuleProvider("Ads", "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.yaml", "Ads.yaml"),
+    Ads:       createRuleProvider("Ads", "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml", "Ads.yaml"),
     YouTube:   createRuleProvider("YouTube", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"),
     Spotify:   createRuleProvider("Spotify", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"),
     Openai:    createRuleProvider("Openai", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"),

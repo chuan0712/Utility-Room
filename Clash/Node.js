@@ -58,7 +58,7 @@ function main(config) {
 
 
 // 定义常用的代理选项，用于select类型的代理组
-  const commonProxies = ["🌏 全球直连", "🚫 拒绝连接", "🇭🇰 自动选择", "🇭🇰 负载均衡", "🇸🇬 自动选择", "🇸🇬 负载均衡", "🇺🇸 自动选择", "🇺🇸 负载均衡"];
+  const commonProxies = ["🌏 全球直连", "🚫 广告过滤", "🇭🇰 自动选择", "🇭🇰 负载均衡", "🇸🇬 自动选择", "🇸🇬 负载均衡", "🇺🇸 自动选择", "🇺🇸 负载均衡"];
 // 定义通用的排除过滤器，用于url-test和load-balance类型的代理组
   const commonExcludeFilter = "(?i)0\\.1倍|0\\.01倍";
 
@@ -117,26 +117,28 @@ config["proxy-groups"] = [
 
   // 直连和拒绝组 (通常隐藏)
   createSelectGroup("🌏 全球直连", ["DIRECT"], true),
-  createSelectGroup("🚫 拒绝连接", ["REJECT"], true)
+  createSelectGroup("🚫 广告过滤", ["REJECT"], true)
 ];
 
   //生成rule-providers配置。
   config["rule-providers"] = {
-    China: createRuleProvider("China", "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "China.yaml"),
-    YouTube: createRuleProvider("YouTube", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"),
-    Spotify: createRuleProvider("Spotify", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"),
-    Openai: createRuleProvider("Openai", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"),
-    Gemini: createRuleProvider("Gemini", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"),
-    Telegram: createRuleProvider("Telegram", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"),
-    SteamCN: createRuleProvider("SteamCN", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"),
+    cn:        createRuleProvider("cn", "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"),
+    Ads:       createRuleProvider("Ads", "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.yaml", "Ads.yaml"),
+    YouTube:   createRuleProvider("YouTube", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"),
+    Spotify:   createRuleProvider("Spotify", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"),
+    Openai:    createRuleProvider("Openai", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"),
+    Gemini:    createRuleProvider("Gemini", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"),
+    Telegram:  createRuleProvider("Telegram", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"),
+    SteamCN:   createRuleProvider("SteamCN", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"),
     GoogleFCM: createRuleProvider("GoogleFCM", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GoogleFCM/GoogleFCM.yaml", "GoogleFCM.yaml"),
-    Bing: createRuleProvider("Bing", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml")
+    Bing:      createRuleProvider("Bing", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml")
 }
 
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
-    "RULE-SET,China, 🌏 全球直连",
+    "RULE-SET,cn,  🌏 全球直连",
+    "RULE-SET,Ads, 🚫 广告过滤",
     "PROCESS-NAME, OneDrive.exe,☁️ 微软云盘",
     "PROCESS-NAME, WinStore.App.exe,Ⓜ️ 微软商店",
 

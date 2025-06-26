@@ -3,8 +3,8 @@
 去广告规则
 
 
-#### 规则订阅地址：
+#### 去广告：
 浏览器 https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Ads/Adblock
 
-#### clash
+#### 代理分流
 https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Node.js

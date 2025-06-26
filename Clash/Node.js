@@ -63,34 +63,23 @@ function main(config) {
   const commonExcludeFilter = "(?i)0\\.1倍|0\\.01倍";
 
 //创建一个select类型的代理组。
-function createSelectGroup(name, proxies, hidden = false) {
-  return {
-    name: name,
-    type: "select",
-    proxies: proxies,
-    hidden: hidden // 添加hidden属性
-  };
-}
+function createSelectGroup(name, proxies, hidden = false) { return { name, type: "select", proxies, hidden }; }
 
-//创建一个url-test或load-balance类型的代理组。
+
 function createSmartGroup(name, type, filter, hidden = false) {
-  const baseGroup = {
-    name: name,
-    "include-all": true,
-    type: type,
-    //"exclude-filter": commonExcludeFilter, // 引用外部常量
-    filter: filter
-  };
-
-  if (type === "url-test") {
-    baseGroup.interval = 300;
-    baseGroup.url = "http://www.gstatic.com/generate_204";
-    baseGroup.tolerance = 50; // 容忍度
-    baseGroup["max-failed-times"] = 3; // 添加最大失败次数属性
-  } else if (type === "load-balance") {
-    baseGroup.strategy = "consistent-hashing";
-    baseGroup.hidden = hidden;
-  }
+  const baseGroup = { name, "include-all": true, type, filter };
+  if (type === "url-test")
+    Object.assign(baseGroup, {
+      interval: 300,
+      url: "http://www.gstatic.com/generate_204",
+      tolerance: 50,
+      "max-failed-times": 3,
+    });
+  else if (type === "load-balance")
+    Object.assign(baseGroup, {
+      strategy: "consistent-hashing",
+      hidden,
+    });
   return baseGroup;
 }
 

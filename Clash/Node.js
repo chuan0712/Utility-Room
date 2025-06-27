@@ -1,4 +1,5 @@
 //https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Node.js
+
 // 程序入口
 function main(config) {
 
@@ -47,8 +48,24 @@ function main(config) {
       "HTTP": { "ports": [80, "8080-8880"], },
       "QUIC": { "ports": [443, 8443], },
     },
+      "skip-src-address": [
+      "127.0.0.0/8",
+      "192.168.0.0/16",
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+    ],
+    "force-domain": [
+      "+.google.com",
+      "+.googleapis.com",
+      "+.googleusercontent.com",
+      "+.youtube.com",
+      "+.facebook.com",
+      "+.messenger.com",
+      "+.fbcdn.net",
+      "+.akamaihd.net",
+    ],
+    "skip-domain": ["Mijia Cloud", "+.oray.com"],
   };
-
 
   //建立常量
   const common = ["🇨🇳 国内直连", "🚫 丢弃连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
@@ -63,7 +80,6 @@ function main(config) {
     { name: "🎶 音乐媒体", type: "select", proxies: common },
     { name: "🔍 微软必应", type: "select", proxies: common },
     { name: "☁️ 微软云盘", type: "select", proxies: common },
-    { name: "Ⓜ️ 微软商店", type: "select", proxies: common },
 
     // 自动选择组
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
@@ -84,6 +100,7 @@ function main(config) {
   config["rule-providers"] = [
     ["cn",        "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"],
     ["Ads",       "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml", "Ads.yaml"],
+    ["OneDrive",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OneDrive/OneDrive.yaml", "OneDrive.yaml"],
     ["YouTube",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
     ["Spotify",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
     ["Openai",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
@@ -109,8 +126,10 @@ function main(config) {
     // 📦 基础规则
     "RULE-SET,cn,  🇨🇳 国内直连",
     "RULE-SET,Ads, 🚫 丢弃连接",
-    "PROCESS-NAME, OneDrive.exe,☁️ 微软云盘",
-    "PROCESS-NAME, WinStore.App.exe,Ⓜ️ 微软商店",
+    "RULE-SET,Bing,     🔍 微软必应",
+    "RULE-SET,OneDrive, ☁️ 微软云盘",
+    "RULE-SET,GoogleFCM, 🇨🇳 国内直连",
+
 
     // 🎬 影音娱乐
     "RULE-SET,YouTube, 🇺🇸 负载均衡",
@@ -126,9 +145,6 @@ function main(config) {
     // 🎮 游戏平台
     "RULE-SET,SteamCN, 🇨🇳 国内直连",
 
-    // 🧰 工具服务
-    "RULE-SET,GoogleFCM, 🇨🇳 国内直连",
-    "RULE-SET,Bing,      🔍 微软必应",
 
     // 🌐 GEO 规则
     "GEOSITE,private, 🇨🇳 国内直连",

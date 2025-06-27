@@ -1,12 +1,6 @@
-
+//https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Node.js
 // 程序入口
 function main(config) {
-  const proxyCount = config?.proxies?.length ?? 0;
-  const proxyProviderCount =
-    typeof config?.["proxy-providers"] === "object" ? Object.keys(config["proxy-providers"]).length : 0;
-  if (proxyCount === 0 && proxyProviderCount === 0) {
-    throw new Error("配置文件中未找到任何代理");
-  }
 
   // 定义直连 DNS 和代理 DNS 的数组
   const direct_dns = ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"];
@@ -56,89 +50,65 @@ function main(config) {
   };
 
 
+  //建立常量
+  const common = ["🇨🇳 国内直连", "⛔︎ 丢弃连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
+  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 50, "max-failed-times": 3};
+  const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
 
-// 定义常用的代理选项，用于select类型的代理组
-  const commonProxies = ["🌏 全球直连", "🚫 广告过滤", "🇭🇰 自动选择", "🇭🇰 负载均衡", "🇸🇬 自动选择", "🇸🇬 负载均衡", "🇺🇸 自动选择", "🇺🇸 负载均衡"];
-// 定义通用的排除过滤器，用于url-test和load-balance类型的代理组
-  const commonExcludeFilter = "(?i)0\\.1倍|0\\.01倍";
+  //生成proxy-groups配置。
+  config["proxy-groups"] = [
+    {name: "✈️ 节点总览", "include-all": true, type: "select"},
 
-//创建一个select类型的代理组。
-function createSelectGroup(name, proxies, hidden = false) { return { name, type: "select", proxies, hidden }; }
+    { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
+    { name: "🎶 音乐媒体", type: "select", proxies: common },
+    { name: "🔍 微软必应", type: "select", proxies: common },
+    { name: "☁️ 微软云盘", type: "select", proxies: common },
+    { name: "Ⓜ️ 微软商店", type: "select", proxies: common },
+
+    // 自动选择组
+    { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
+    { name: "🇸🇬 自动选择", ...auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" },
+    { name: "🇺🇸 自动选择", ...auto, filter: "(?i)美|US|America|United States" },
+
+    // 负载均衡组（通常隐藏）
+    { name: "🇭🇰 负载均衡", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
+    { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
+    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
+
+    // 直连和丢弃组 (通常隐藏)
+    { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },
+    { name: "⛔︎ 丢弃连接", type: "select", proxies: ["REJECT"], hidden: true }
+  ];
 
 
-function createSmartGroup(name, type, filter, hidden = false) {
-  const baseGroup = { name, "include-all": true, type, filter };
-  if (type === "url-test")
-    Object.assign(baseGroup, {
-      interval: 300,
-      url: "http://www.gstatic.com/generate_204",
-      tolerance: 50,
-      "max-failed-times": 3,
-    });
-  else if (type === "load-balance")
-    Object.assign(baseGroup, {
-      strategy: "consistent-hashing",
-      hidden,
-    });
-  return baseGroup;
-}
+  config["rule-providers"] = [
+    ["cn",        "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"],
+    ["Ads",       "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml", "Ads.yaml"],
+    ["YouTube",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
+    ["Spotify",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
+    ["Openai",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
+    ["Gemini",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
+    ["Telegram",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"],
+    ["SteamCN",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
+    ["GoogleFCM", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GoogleFCM/GoogleFCM.yaml", "GoogleFCM.yaml"],
+    ["Bing",      "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"]
+  ].reduce((acc, [name, url, path]) => (
+    acc[name] = {
+      type: "http",
+      interval: 86400,
+      behavior: "classical",
+      format: "yaml",
+      url,
+      path: `./ruleset/classical/${path}`
+    }, acc
+  ), {});
 
-//创建一个rule-provider配置。
-function createRuleProvider(name, url, path) {
-  return {
-    type: "http",
-    interval: 86400, // 每天更新一次
-    behavior: "classical",
-    format: "yaml",
-    url: url,
-    path: `./ruleset/classical/${path}`
-  };
-}
-
-//生成proxy-groups配置。
-config["proxy-groups"] = [
-  {name: "✈️ 节点总览", "include-all": true, type: "select"},
-
-  createSelectGroup("🔗 默认代理", commonProxies), // 引用外部常量
-  createSelectGroup("🎶 音乐媒体", commonProxies),
-  createSelectGroup("🔍 微软必应", commonProxies),
-  createSelectGroup("☁️ 微软云盘", commonProxies),
-  createSelectGroup("Ⓜ️ 微软商店", commonProxies),
-
-  // 自动选择组
-  createSmartGroup("🇭🇰 自动选择", "url-test", "(?i)港|🇭🇰|HongKong|Hong Kong"),
-  createSmartGroup("🇸🇬 自动选择", "url-test", "(?i)新加坡|坡|狮城|🇸🇬|Singapore"),
-  createSmartGroup("🇺🇸 自动选择", "url-test", "(?i)美|US|America|United States"),
-
-  // 负载均衡组 (通常隐藏)
-  createSmartGroup("🇭🇰 负载均衡", "load-balance", "(?i)港|🇭🇰|HongKong|Hong Kong", true),
-  createSmartGroup("🇸🇬 负载均衡", "load-balance", "(?i)新加坡|坡|狮城|🇸🇬|Singapore", true),
-  createSmartGroup("🇺🇸 负载均衡", "load-balance", "(?i)美|US|America|United States", true),
-
-  // 直连和拒绝组 (通常隐藏)
-  createSelectGroup("🌏 全球直连", ["DIRECT"], true),
-  createSelectGroup("🚫 广告过滤", ["REJECT"], true)
-];
-
-  //生成rule-providers配置。
-  config["rule-providers"] = {
-    cn:        createRuleProvider("cn", "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"),
-    Ads:       createRuleProvider("Ads", "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml", "Ads.yaml"),
-    YouTube:   createRuleProvider("YouTube", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"),
-    Spotify:   createRuleProvider("Spotify", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"),
-    Openai:    createRuleProvider("Openai", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"),
-    Gemini:    createRuleProvider("Gemini", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"),
-    Telegram:  createRuleProvider("Telegram", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"),
-    SteamCN:   createRuleProvider("SteamCN", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"),
-    GoogleFCM: createRuleProvider("GoogleFCM", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GoogleFCM/GoogleFCM.yaml", "GoogleFCM.yaml"),
-    Bing:      createRuleProvider("Bing", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml")
-}
 
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
-    "RULE-SET,cn,  🌏 全球直连",
-    "RULE-SET,Ads, 🚫 广告过滤",
+    "RULE-SET,cn,  🇨🇳 国内直连",
+    "RULE-SET,Ads, ⛔︎ 丢弃连接",
     "PROCESS-NAME, OneDrive.exe,☁️ 微软云盘",
     "PROCESS-NAME, WinStore.App.exe,Ⓜ️ 微软商店",
 
@@ -154,17 +124,17 @@ config["proxy-groups"] = [
     "RULE-SET,Telegram, 🇸🇬 负载均衡",
 
     // 🎮 游戏平台
-    "RULE-SET,SteamCN, 🌏 全球直连",
+    "RULE-SET,SteamCN, 🇨🇳 国内直连",
 
     // 🧰 工具服务
-    "RULE-SET,GoogleFCM, 🌏 全球直连",
-    "RULE-SET,Bing, 🔍 微软必应",
+    "RULE-SET,GoogleFCM, 🇨🇳 国内直连",
+    "RULE-SET,Bing,      🔍 微软必应",
 
     // 🌐 GEO 规则
-    "GEOSITE,private, 🌏 全球直连",
-    "GEOSITE,cn, 🌏 全球直连",
-    "GEOIP,private, 🌏 全球直连,no-resolve",
-    "GEOIP,CN, 🌏 全球直连,no-resolve",
+    "GEOSITE,private, 🇨🇳 国内直连",
+    "GEOSITE,cn,      🇨🇳 国内直连",
+    "GEOIP,private, 🇨🇳 国内直连,no-resolve",
+    "GEOIP,CN,      🇨🇳 国内直连,no-resolve",
 
     // 默认规则
     "MATCH, 🔗 默认代理",

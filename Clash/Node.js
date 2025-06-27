@@ -20,7 +20,7 @@ function main(config) {
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist", // 黑名单
-    "fake-ip-filter": ["*","+.lan","+.local","+.direct","+.msftncsi.com","+.msftconnecttest.com"],
+    "fake-ip-filter": ["*","+.lan","+.local","+.msftncsi.com","+.msftconnecttest.com"],
     "use-hosts": true,
     "use-system-hosts": true,
     "respect-rules": true, // 遵循规则

@@ -51,7 +51,7 @@ function main(config) {
 
 
   //建立常量
-  const common = ["🇨🇳 国内直连", "⛔︎ 丢弃连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
+  const common = ["🇨🇳 国内直连", "🚫 丢弃连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
   const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 50, "max-failed-times": 3};
   const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
 
@@ -77,7 +77,7 @@ function main(config) {
 
     // 直连和丢弃组 (通常隐藏)
     { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },
-    { name: "⛔︎ 丢弃连接", type: "select", proxies: ["REJECT"], hidden: true }
+    { name: "🚫 丢弃连接", type: "select", proxies: ["REJECT"], hidden: true }
   ];
 
 
@@ -108,7 +108,7 @@ function main(config) {
   config["rules"] = [
     // 📦 基础规则
     "RULE-SET,cn,  🇨🇳 国内直连",
-    "RULE-SET,Ads, ⛔︎ 丢弃连接",
+    "RULE-SET,Ads, 🚫 丢弃连接",
     "PROCESS-NAME, OneDrive.exe,☁️ 微软云盘",
     "PROCESS-NAME, WinStore.App.exe,Ⓜ️ 微软商店",
 

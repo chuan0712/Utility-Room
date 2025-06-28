@@ -4,8 +4,8 @@
 function main(config) {
 
   // 定义直连 DNS 和代理 DNS 的数组
-  const direct_dns = ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"];
-  const proxy_dns = ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"];
+  const direct_dns = ["quic://dns.alidns.com", "https://doh.pub/dns-query"];
+  const proxy_dns  = ["quic://cloudflare-dns.com", "https://dns.google/dns-query"];
 
   // 覆盖 dns 配置
   config["dns"] = {
@@ -20,10 +20,9 @@ function main(config) {
     "use-system-hosts": true,
     "respect-rules": true, // 遵循规则
     "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-    "nameserver-policy": {"+.internal.crop.com": ["10.0.0.1"], "geosite:cn": direct_dns},
-    "nameserver": direct_dns, // 默认的域名解析服务器
-    "fallback": proxy_dns, // 后备域名解析服务器
     "proxy-server-nameserver": direct_dns,
+    "nameserver-policy": {"+.arpa": ["10.0.0.1"]},
+    "nameserver": proxy_dns, // 默认的域名解析服务器
     "direct-nameserver": direct_dns,
     "direct-nameserver-follow-policy": false // 直连 DNS 是否遵循 nameserver-policy
   };
@@ -41,30 +40,21 @@ function main(config) {
   config["sniffer"] = {
     "enable": true,
     "force-dns-mapping": true, // 强制使用 DNS 映射
-    "parse-pure-ip": false, // 是否解析纯 IP 地址
+    "parse-pure-ip": true, // 是否解析纯 IP 地址
     "override-destination": true, // 是否覆盖目标地址
     "sniff": {
       "TLS":  { "ports": [443, 8443], },
       "HTTP": { "ports": [80, "8080-8880"], },
       "QUIC": { "ports": [443, 8443], },
     },
-      "skip-src-address": [
+      "skip-src-address": [ //对于目标ip跳过嗅探
       "127.0.0.0/8",
       "192.168.0.0/16",
       "10.0.0.0/8",
       "172.16.0.0/12",
     ],
-    "force-domain": [
-      "+.google.com",
-      "+.googleapis.com",
-      "+.googleusercontent.com",
-      "+.youtube.com",
-      "+.facebook.com",
-      "+.messenger.com",
-      "+.fbcdn.net",
-      "+.akamaihd.net",
-    ],
-    "skip-domain": ["Mijia Cloud", "+.oray.com"],
+    "force-domain": ["+.v2ex.com"],
+    "skip-domain":  ["Mijia Cloud", "+.oray.com"],
   };
 
   //建立常量

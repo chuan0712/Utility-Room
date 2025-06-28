@@ -10,6 +10,7 @@ payload:
   
   # 青柠起始页
   - - DOMAIN-SUFFIX,limestart.cn
-  # xlm代理
+  # 代理 赔钱 xlm aisu
+  - DOMAIN,dash.pqjc.site
   - DOMAIN,v2.ixlmo.net
-
+  - DOMAIN,img.aisu.life

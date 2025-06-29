@@ -1,4 +1,4 @@
-//https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Note.js
+// https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Note.js
 
 // 程序入口
 function main(config) {
@@ -89,7 +89,6 @@ function main(config) {
 
   config["rule-providers"] = [
     ["cn",        "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"],
-    ["Ads",       "https://cdn.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash-Classical.yaml", "Ads.yaml"],
     ["OneDrive",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OneDrive/OneDrive.yaml", "OneDrive.yaml"],
     ["YouTube",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
     ["Spotify",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
@@ -115,7 +114,6 @@ function main(config) {
   config["rules"] = [
     // 📦 基础规则
     "RULE-SET,cn,  🇨🇳 国内直连",
-    "RULE-SET,Ads, 🚫 丢弃连接",
     "RULE-SET,Bing,     🔍 微软必应",
     "RULE-SET,OneDrive, ☁️ 微软云盘",
     "RULE-SET,GoogleFCM, 🇨🇳 国内直连",

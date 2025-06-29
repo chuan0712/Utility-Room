@@ -58,7 +58,7 @@ function main(config) {
   };
 
   //建立常量
-  const common = ["🇨🇳 国内直连", "🚫 丢弃连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
+  const common = ["🇨🇳 国内直连", "🚫 拒绝连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
   const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 50, "max-failed-times": 3};
   const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
 
@@ -67,9 +67,14 @@ function main(config) {
     {name: "✈️ 节点总览", "include-all": true, type: "select"},
 
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
-    { name: "🎶 音乐媒体", type: "select", proxies: common },
     { name: "🔍 微软必应", type: "select", proxies: common },
-    { name: "☁️ 微软云盘", type: "select", proxies: common },
+    { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
+    { name: "💬 社交平台", type: "select", proxies: common },
+    { name: "▶️ 油管视频", type: "select", proxies: common },
+    { name: "✨️ 智能助理", type: "select", proxies: common },
+    { name: "🎶 音乐媒体", type: "select", proxies: common },
+
+
 
     // 自动选择组
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
@@ -81,23 +86,24 @@ function main(config) {
     { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
     { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
 
-    // 直连和丢弃组 (通常隐藏)
+    // 直连和拒绝组 (通常隐藏)
     { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },
-    { name: "🚫 丢弃连接", type: "select", proxies: ["REJECT"], hidden: true }
+    { name: "🚫 拒绝连接", type: "select", proxies: ["REJECT"], hidden: true }
   ];
 
 
   config["rule-providers"] = [
     ["cn",        "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"],
-    ["OneDrive",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OneDrive/OneDrive.yaml", "OneDrive.yaml"],
+    ["BanAD",     "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml", "BanAD.list"],
+    ["Direct",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
+    ["Bing",      "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
+    ["Microsoft", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml", "Microsoft.yaml"],
     ["YouTube",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
     ["Spotify",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
     ["Openai",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
     ["Gemini",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
     ["Telegram",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"],
     ["SteamCN",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
-    ["GoogleFCM", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GoogleFCM/GoogleFCM.yaml", "GoogleFCM.yaml"],
-    ["Bing",      "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"]
   ].reduce((acc, [name, url, path]) => (
     acc[name] = {
       type: "http",
@@ -113,22 +119,23 @@ function main(config) {
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
-    "RULE-SET,cn,  🇨🇳 国内直连",
-    "RULE-SET,Bing,     🔍 微软必应",
-    "RULE-SET,OneDrive, ☁️ 微软云盘",
-    "RULE-SET,GoogleFCM, 🇨🇳 国内直连",
+    "RULE-SET,cn,     🇨🇳 国内直连",
+    "RULE-SET,Direct, 🇨🇳 国内直连",
+    "RULE-SET,BanAD,     🚫 拒绝连接", //仅常见广告域名,理论无影响
+    "RULE-SET,Bing,      🔍 微软必应",
+    "RULE-SET,Microsoft, Ⓜ️ 微软服务",
 
 
-    // 🎬 影音娱乐
-    "RULE-SET,YouTube, 🇺🇸 自动选择",
+    // 🎬 影音视听
+    "RULE-SET,YouTube, ▶️ 油管视频",
     "RULE-SET,Spotify, 🎶 音乐媒体",
 
     // 🤖 人工智能
-    "RULE-SET,Openai, 🇺🇸 负载均衡",
-    "RULE-SET,Gemini, 🇺🇸 负载均衡",
+    "RULE-SET,Openai,   ✨️ 智能助理",
+    "RULE-SET,Gemini,   ✨️ 智能助理",
 
     // 💬 社交平台
-    "RULE-SET,Telegram, 🇸🇬 负载均衡",
+    "RULE-SET,Telegram, 💬 社交平台",
 
     // 🎮 游戏平台
     "RULE-SET,SteamCN, 🇨🇳 国内直连",

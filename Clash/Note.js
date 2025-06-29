@@ -1,4 +1,4 @@
-//https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Node.js
+//https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Note.js
 
 // 程序入口
 function main(config) {

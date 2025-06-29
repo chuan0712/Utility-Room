@@ -122,7 +122,7 @@ function main(config) {
 
 
     // 🎬 影音娱乐
-    "RULE-SET,YouTube, 🇺🇸 负载均衡",
+    "RULE-SET,YouTube, 🇺🇸 自动选择",
     "RULE-SET,Spotify, 🎶 音乐媒体",
 
     // 🤖 人工智能

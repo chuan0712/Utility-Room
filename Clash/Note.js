@@ -27,6 +27,7 @@ function main(config) {
     "direct-nameserver-follow-policy": false // 直连 DNS 是否遵循 nameserver-policy
   };
 
+
   // 覆盖 sniffer 配置
   config["sniffer"] = {
     "enable": true,
@@ -84,17 +85,17 @@ function main(config) {
 
 
   config["rule-providers"] = [
-    ["cn",        "https://cdn.jsdelivr.net/gh/chuan0712/Utility-Room@main/Clash/cn.yaml", "cn.yaml"],
-    ["BanAD",     "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml", "BanAD.yaml"],
-    ["Direct",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
-    ["Bing",      "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
-    ["Microsoft", "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml", "Microsoft.yaml"],
-    ["YouTube",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
-    ["Spotify",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
-    ["Openai",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
-    ["Gemini",    "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
-    ["Telegram",  "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"],
-    ["SteamCN",   "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
+    ["cn",        "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"],
+    ["BanAD",     "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml", "BanAD.yaml"],
+    ["Direct",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
+    ["Bing",      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
+    ["Microsoft", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml", "Microsoft.yaml"],
+    ["YouTube",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
+    ["Spotify",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
+    ["Openai",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
+    ["Gemini",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
+    ["Telegram",  "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"],
+    ["SteamCN",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
   ].reduce((acc, [name, url, path]) => (
     acc[name] = {
       type: "http",
@@ -105,6 +106,7 @@ function main(config) {
       path: `./ruleset/classical/${path}`
     }, acc
   ), {});
+
 
 
   //生成rules配置。

@@ -27,15 +27,6 @@ function main(config) {
     "direct-nameserver-follow-policy": false // 直连 DNS 是否遵循 nameserver-policy
   };
 
-  // 覆盖 geodata 配置
-  config["geodata-mode"] = true;
-  config["geox-url"] = {
-    "geoip": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.dat",
-    "geosite": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite-lite.dat",
-    "mmdb": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country-lite.mmdb",
-    "asn": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
-  };
-
   // 覆盖 sniffer 配置
   config["sniffer"] = {
     "enable": true,
@@ -84,7 +75,7 @@ function main(config) {
     // 负载均衡组（通常隐藏）
     { name: "🇭🇰 负载均衡", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
     { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
-    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
+    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true, "exclude-filter": "(?i)0\\.1倍|0\\.01倍" },
 
     // 直连和拒绝组 (通常隐藏)
     { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },

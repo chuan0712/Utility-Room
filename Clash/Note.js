@@ -69,9 +69,9 @@ function main(config) {
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
     { name: "🔍 微软必应", type: "select", proxies: common },
     { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
-    { name: "💬 社交平台", type: "select", proxies: common },
-    { name: "▶️ 油管视频", type: "select", proxies: common },
-    { name: "✨️ 智能助理", type: "select", proxies: common },
+    { name: "📲 社交平台", type: "select", proxies: common },
+    { name: "📹 油管视频", type: "select", proxies: common },
+    { name: "🗨️ 智能助理", type: "select", proxies: common },
     { name: "🎶 音乐媒体", type: "select", proxies: common },
 
 
@@ -127,15 +127,15 @@ function main(config) {
 
 
     // 🎬 影音视听
-    "RULE-SET,YouTube, ▶️ 油管视频",
+    "RULE-SET,YouTube, 📹 油管视频",
     "RULE-SET,Spotify, 🎶 音乐媒体",
 
     // 🤖 人工智能
-    "RULE-SET,Openai,   ✨️ 智能助理",
-    "RULE-SET,Gemini,   ✨️ 智能助理",
+    "RULE-SET,Openai,   🗨️ 智能助理",
+    "RULE-SET,Gemini,   🗨️ 智能助理",
 
-    // 💬 社交平台
-    "RULE-SET,Telegram, 💬 社交平台",
+    // 📲 社交平台
+    "RULE-SET,Telegram, 📲 社交平台",
 
     // 🎮 游戏平台
     "RULE-SET,SteamCN, 🇨🇳 国内直连",

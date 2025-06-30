@@ -63,7 +63,7 @@ function main(config) {
     { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
     { name: "📲 社交平台", type: "select", proxies: common },
     { name: "📹 油管视频", type: "select", proxies: common },
-    { name: "🗨️ 智能助理", type: "select", proxies: common },
+    { name: "💬 智能助理", type: "select", proxies: common },
     { name: "🎶 音乐媒体", type: "select", proxies: common },
 
 
@@ -124,8 +124,8 @@ function main(config) {
     "RULE-SET,Spotify, 🎶 音乐媒体",
 
     // 🤖 人工智能
-    "RULE-SET,Openai,   🗨️ 智能助理",
-    "RULE-SET,Gemini,   🗨️ 智能助理",
+    "RULE-SET,Openai,   💬 智能助理",
+    "RULE-SET,Gemini,   💬 智能助理",
 
     // 📲 社交平台
     "RULE-SET,Telegram, 📲 社交平台",

@@ -16,8 +16,6 @@ function main(config) {
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist", // 黑名单
     "fake-ip-filter": ["*","+.lan","+.local","+.msftncsi.com","+.msftconnecttest.com"],
-    "use-hosts": true,
-    "use-system-hosts": true,
     "respect-rules": true, // 遵循规则
     "default-nameserver": ["223.5.5.5", "119.29.29.29"],
     "proxy-server-nameserver": direct_dns,

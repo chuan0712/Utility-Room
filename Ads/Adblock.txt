@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
 ! Title: 返璞归真 - 2025-02-04
 ! Description: Custom rules to block unwanted elements.
-! Homepage: (https://raw.githubusercontent.com/G-chuan2024/Ads/main/Ads/Adblock)
+! Homepage: (https://raw.githubusercontent.com/G-chuan2024/Ads/main/Ads/Adblock.txt)
 ! 注意：部分规则可能需要根据实际情况进行调整。
 
 ! 知乎 (Zhihu)

@@ -3,7 +3,7 @@
 #=======================================  拦截广告  ===========================================
 #已收录: [微信公众号] [QQ浏览器] [QQ开屏] [高德地图] [拼多多] [番茄小说] [] [] [] [] [] [] 
 
-#微信公众号(只禁③广告位还在只是不显示广告图片&视频)目前已经完全没广告且评论区还在
+# 微信公众号(只禁③广告位还在只是不显示广告图片&视频)目前已经完全没广告且评论区还在
 127.0.0.1 wxa.wxs.qq.com
 127.0.0.1 wxsnsdy.wxs.qq.com
 127.0.0.1 wxsnsdythumb.wxs.qq.com
@@ -11,10 +11,10 @@
 127.0.0.1 bc.weixin.qq.com
 127.0.0.1 channels.weixin.qq.com
 127.0.0.1 badjs.weixinbridge.com
-#QQ浏览器
+# QQ浏览器
 127.0.0.1 kde.qq.com  #小说？
 127.0.0.1 ug.qbimg.qq.com  #开屏和首页下面的弹出式伸缩的广告图。
-#AI在网上搜集的QQ开屏、横幅广告
+# AI在网上搜集的QQ开屏、横幅广告
 127.0.0.1 mqq.qq.com
 127.0.0.1 ssp.qq.com
 127.0.0.1 ad.qq.com
@@ -30,15 +30,15 @@
 127.0.0.1 jingjia.qq.com
 127.0.0.1 rich.qq.com
 127.0.0.1 union.qq.com
-#高德地图(①开屏②③横幅和通知中心？№④№)
+# 高德地图(①开屏②③横幅和通知中心？№④№)
 127.0.0.1 optimus-ads.amap.com
 127.0.0.1 store.is.autonavi.com
 127.0.0.1 adiu.amap.com
 127.0.0.1 cgicol.amap.com
-#拼多多广告
+# 拼多多广告
 127.0.0.1 images.pinduoduo.com
 127.0.0.1 t-dsp.pinduoduo.com
-#??? 云控?
+# ??? 云控?
 127.0.0.1 qsb.browser.miui.srv
 127.0.0.1 rom.pt.miui.srv
 127.0.0.1 ccc.sys.miui.com
@@ -50,21 +50,14 @@
 #=======================================hotst重定向===========================================
 #=======================================hotst重定向===========================================
 #=======================================hotst重定向===========================================
-#已收录: [小米rom下载] [国区bing] [谷歌翻译] [GitHub加速] [mt管理器] [] [] [] [] [] [] 
+# 已收录: [小米rom下载] [国区bing] [谷歌翻译] [GitHub加速] [mt管理器] [] [] [] [] [] [] 
 
-#小米rom下载加速
+# 小米rom下载加速
 182.239.104.89 bigota.d.miui.com
 182.239.104.89 hugeota.d.miui.com
-#微软翻译
-#20.189.109.69  api-edge.cognitive.microsofttranslator.com
-#204.79.197.239 edge.microsoft.com
-#谷歌翻译(国区可用)
-216.239.32.40  translate.googleapis.com
-216.239.32.40  translate.google.com
-216.239.32.40  translate-pa.googleapis.com
+
 #mt管理器
 127.0.0.1 umeng.com
 127.0.0.1 safe.mt2.cn
-#FCM推送
-#fcm会优先连接2404其次2607，alt1~alt8顺序是这样的
+
 

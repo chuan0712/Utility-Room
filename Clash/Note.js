@@ -37,7 +37,7 @@ function main(config) {
       "HTTP": { "ports": [80, "8080-8880"], },
       "QUIC": { "ports": [443, 8443], },
     },
-      "skip-src-address": [ //对于目标ip跳过嗅探
+    "skip-src-address": [ //对于目标ip跳过嗅探
       "127.0.0.0/8",
       "192.168.0.0/16",
       "10.0.0.0/8",
@@ -58,6 +58,7 @@ function main(config) {
 
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
     { name: "🔍 微软必应", type: "select", proxies: common },
+    { name: "🐱 代码托管", type: "select", proxies: common },
     { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
     { name: "📲 社交平台", type: "select", proxies: common },
     { name: "📹 油管视频", type: "select", proxies: common },
@@ -87,6 +88,7 @@ function main(config) {
     ["BanAD",     "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml", "BanAD.yaml"],
     ["Direct",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
     ["Bing",      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
+    ["GitHub",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml", "GitHub.yaml"],
     ["Microsoft", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml", "Microsoft.yaml"],
     ["YouTube",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
     ["Spotify",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
@@ -113,6 +115,7 @@ function main(config) {
     "RULE-SET,cn,     🇨🇳 国内直连",
     "RULE-SET,Direct, 🇨🇳 国内直连",
     "RULE-SET,BanAD,     🚫 拒绝连接", //仅常见广告域名,理论无影响
+    "RULE-SET,GitHub,    🐱 代码托管", // GitHub 规则
     "RULE-SET,Bing,      🔍 微软必应",
     "RULE-SET,Microsoft, Ⓜ️ 微软服务",
 
@@ -138,7 +141,7 @@ function main(config) {
     "GEOIP,private, 🇨🇳 国内直连,no-resolve",
     "GEOIP,CN,      🇨🇳 国内直连,no-resolve",
 
-    // 默认规则
+    // 漏网之鱼
     "MATCH, 🔗 默认代理",
 ]
 

@@ -4,8 +4,8 @@
 function main(config) {
 
   // 定义直连 DNS 和代理 DNS 的数组
-  const direct_dns = ["quic://dns.alidns.com", "https://doh.pub/dns-query"];
-  const proxy_dns  = ["quic://cloudflare-dns.com", "https://dns.google/dns-query"];
+  const direct_dns = ["https://dns.alidns.com/dns-query", "https://doh.pub/dns-query"];
+  const proxy_dns  = ["https://cloudflare-dns.com/dns-query", "https://dns.google/dns-query"];
 
   // 覆盖 dns 配置
   config["dns"] = {

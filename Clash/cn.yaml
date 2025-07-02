@@ -1,9 +1,6 @@
 payload:
   # 123 云盘相关域名
   - DOMAIN-SUFFIX,123952.com
-  
-  # jsDelivr cdn代理
-  - DOMAIN-SUFFIX,jsdelivr.net
 
   # 密码管理器
   - DOMAIN-SUFFIX,bitwarden.com
@@ -14,3 +11,6 @@ payload:
   - DOMAIN,dash.pqjc.site
   - DOMAIN,v2.ixlmo.net
   - DOMAIN,img.aisu.life
+
+  # r18
+  - DOMAIN,618016.xyz

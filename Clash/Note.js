@@ -19,7 +19,7 @@ function main(config) {
     "respect-rules": true, // 遵循规则
     "default-nameserver": ["223.5.5.5", "119.29.29.29"],
     "proxy-server-nameserver": direct_dns,
-    "nameserver-policy": {"+.arpa": ["10.0.0.1"]},
+    "nameserver-policy": {"+.arpa": ["10.0.0.1"],"PROCESS-NAME,com.coolapk.market": ["a232811371.666.66a.net"]},
     "nameserver": proxy_dns, // 默认的域名解析服务器
     "direct-nameserver": direct_dns,
     "direct-nameserver-follow-policy": false // 直连 DNS 是否遵循 nameserver-policy
@@ -118,6 +118,7 @@ function main(config) {
     "RULE-SET,GitHub,    🐱 代码托管", // GitHub 规则
     "RULE-SET,Bing,      🔍 微软必应",
     "RULE-SET,Microsoft, Ⓜ️ 微软服务",
+    "PROCESS-NAME,com.coolapk.market,🇨🇳 国内直连",
 
 
     // 🎬 影音视听

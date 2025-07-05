@@ -119,6 +119,7 @@ function main(config) {
     "GEOSITE,youtube,   📹 油管视频",
     "GEOSITE,spotify,   🎶 音乐媒体",
     "GEOSITE,telegram,  📲 电报消息",
+    "GEOSITE,openai,    💬 智能助理",
     "GEOSITE,private,   🇨🇳 国内直连",
     "GEOSITE,cn,        🇨🇳 国内直连",
 

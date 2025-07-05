@@ -60,7 +60,7 @@ function main(config) {
     { name: "🔍 微软必应", type: "select", proxies: common },
     { name: "🐱 代码托管", type: "select", proxies: common },
     { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
-    { name: "📲 社交平台", type: "select", proxies: common },
+    { name: "📲 电报消息", type: "select", proxies: common },
     { name: "📹 油管视频", type: "select", proxies: common },
     { name: "💬 智能助理", type: "select", proxies: common },
     { name: "🎶 音乐媒体", type: "select", proxies: common },
@@ -85,16 +85,9 @@ function main(config) {
 
   config["rule-providers"] = [
     ["cn",        "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"],
-    ["BanAD",     "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml", "BanAD.yaml"],
     ["Direct",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
     ["Bing",      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
-    ["GitHub",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml", "GitHub.yaml"],
-    ["Microsoft", "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml", "Microsoft.yaml"],
-    ["YouTube",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml", "YouTube.yaml"],
-    ["Spotify",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml", "Spotify.yaml"],
-    ["Openai",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml", "OpenAI.yaml"],
     ["Gemini",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
-    ["Telegram",  "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml", "Telegram.yaml"],
     ["SteamCN",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
   ].reduce((acc, [name, url, path]) => (
     acc[name] = {
@@ -112,34 +105,28 @@ function main(config) {
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
-    "RULE-SET,cn,     🇨🇳 国内直连",
-    "RULE-SET,Direct, 🇨🇳 国内直连",
-    "RULE-SET,BanAD,     🚫 拒绝连接", //仅常见广告域名,理论无影响
-    "RULE-SET,GitHub,    🐱 代码托管", // GitHub 规则
-    "RULE-SET,Bing,      🔍 微软必应",
-    "RULE-SET,Microsoft, Ⓜ️ 微软服务",
-
-
-    // 🎬 影音视听
-    "RULE-SET,YouTube, 📹 油管视频",
-    "RULE-SET,Spotify, 🎶 音乐媒体",
-
-    // 🤖 人工智能
-    "RULE-SET,Openai,   💬 智能助理",
-    "RULE-SET,Gemini,   💬 智能助理",
-
-    // 📲 社交平台
-    "RULE-SET,Telegram, 📲 社交平台",
-
-    // 🎮 游戏平台
+    "RULE-SET,cn,      🇨🇳 国内直连",
+    "RULE-SET,Direct,  🇨🇳 国内直连",
+    "RULE-SET,Bing,    🔍 微软必应",
+    "RULE-SET,Gemini,  💬 智能助理",
     "RULE-SET,SteamCN, 🇨🇳 国内直连",
 
 
     // 🌐 GEO 规则
-    "GEOSITE,private, 🇨🇳 国内直连",
-    "GEOSITE,cn,      🇨🇳 国内直连",
-    "GEOIP,private, 🇨🇳 国内直连,no-resolve",
-    "GEOIP,CN,      🇨🇳 国内直连,no-resolve",
+
+    "GEOSITE,github,    🐱 代码托管", // GitHub GEO 规则
+    "GEOSITE,microsoft, Ⓜ️ 微软服务",
+    "GEOSITE,youtube,   📹 油管视频",
+    "GEOSITE,spotify,   🎶 音乐媒体",
+    "GEOSITE,telegram,  📲 电报消息",
+    "GEOSITE,private,   🇨🇳 国内直连",
+    "GEOSITE,cn,        🇨🇳 国内直连",
+
+    "GEOIP,telegram,    📲 电报消息,no-resolve",
+    "GEOIP,private,     🇨🇳 国内直连,no-resolve",
+    "GEOIP,CN,          🇨🇳 国内直连,no-resolve",
+
+
 
     // 漏网之鱼
     "MATCH, 🔗 默认代理",

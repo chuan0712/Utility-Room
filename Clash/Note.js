@@ -49,7 +49,7 @@ function main(config) {
 
   //建立常量
   const common = ["🇨🇳 国内直连", "🚫 拒绝连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
-  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 50, "max-failed-times": 3};
+  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20, "max-failed-times": 3};
   const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
 
   //生成proxy-groups配置。
@@ -75,7 +75,7 @@ function main(config) {
     // 负载均衡组（通常隐藏）
     { name: "🇭🇰 负载均衡", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
     { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
-    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true, "exclude-filter": "(?i)0\\.1倍|0\\.01倍" },
+    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
 
     // 直连和拒绝组 (通常隐藏)
     { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },

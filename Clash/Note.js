@@ -15,7 +15,7 @@ function main(config) {
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist", // 黑名单
-    "fake-ip-filter": ["*","+.lan","+.local","+.msftncsi.com","+.msftconnecttest.com"],
+    "fake-ip-filter": ["*","+.lan","+.local"],
     "respect-rules": true, // 遵循规则
     "default-nameserver": ["223.5.5.5", "119.29.29.29"],
     "proxy-server-nameserver": direct_dns,
@@ -37,9 +37,6 @@ function main(config) {
       "HTTP": { "ports": [80, "8080-8880"], },
       "QUIC": { "ports": [443, 8443], },
     },
-    "skip-src-address": [ /*对于目标ip跳过嗅探*/],
-    "force-domain": ["+.v2ex.com"], 
-    "skip-domain":  ["Mijia Cloud", "+.oray.com"],
   };
 
   //建立常量

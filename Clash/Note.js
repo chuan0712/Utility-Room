@@ -37,13 +37,8 @@ function main(config) {
       "HTTP": { "ports": [80, "8080-8880"], },
       "QUIC": { "ports": [443, 8443], },
     },
-    "skip-src-address": [ //对于目标ip跳过嗅探
-      "127.0.0.0/8",
-      "192.168.0.0/16",
-      "10.0.0.0/8",
-      "172.16.0.0/12",
-    ],
-    "force-domain": ["+.v2ex.com"],
+    "skip-src-address": [ /*对于目标ip跳过嗅探*/],
+    "force-domain": ["+.v2ex.com"], 
     "skip-domain":  ["Mijia Cloud", "+.oray.com"],
   };
 

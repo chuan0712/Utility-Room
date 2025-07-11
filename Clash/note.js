@@ -10,19 +10,18 @@ function main(config) {
   // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,
+    "cache-algorithm": "arc",
     "listen": "0.0.0.0:1053",
     "ipv6": true,
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist", // 黑名单
-    "fake-ip-filter": ["*","+.lan","+.local"],
+    "fake-ip-filter": ["*","+.lan","+.local","time.*.com","ntp.*.com"],
     "respect-rules": true, // 遵循规则
     "default-nameserver": ["223.5.5.5", "119.29.29.29"],
     "proxy-server-nameserver": direct_dns,
-    "nameserver-policy": {"+.arpa": ["10.0.0.1"]},
     "nameserver": proxy_dns, // 默认的域名解析服务器
     "direct-nameserver": direct_dns,
-    "direct-nameserver-follow-policy": true // 直连 DNS 是否遵循 nameserver-policy
   };
 
 
@@ -39,9 +38,14 @@ function main(config) {
     },
   };
 
+  config["proxies"].push(
+    { name: "🇨🇳 国内直连", type: "direct", udp: true },
+    { name: "🚫 拒绝连接", type: "reject" }
+  );
+
   //建立常量
   const common = ["🇨🇳 国内直连", "🚫 拒绝连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
-  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20, "max-failed-times": 3};
+  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20};
   const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
 
   //生成proxy-groups配置。
@@ -50,13 +54,11 @@ function main(config) {
 
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
     { name: "🔍 微软必应", type: "select", proxies: common },
-    { name: "🐱 代码托管", type: "select", proxies: common },
     { name: "Ⓜ️ 微软服务", type: "select", proxies: common },
     { name: "📲 电报消息", type: "select", proxies: common },
     { name: "📹 油管视频", type: "select", proxies: common },
     { name: "💬 智能助理", type: "select", proxies: common },
     { name: "🎶 音乐媒体", type: "select", proxies: common },
-
 
 
     // 自动选择组
@@ -69,9 +71,6 @@ function main(config) {
     { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
     { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
 
-    // 直连和拒绝组 (通常隐藏)
-    { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },
-    { name: "🚫 拒绝连接", type: "select", proxies: ["REJECT"], hidden: true }
   ];
 
 
@@ -106,8 +105,8 @@ function main(config) {
 
     // 🌐 GEO 规则
 
-    "GEOSITE,github,    🐱 代码托管", // GitHub GEO 规则
     "GEOSITE,microsoft, Ⓜ️ 微软服务",
+    "GEOSITE,google,    🔗 默认代理",
     "GEOSITE,youtube,   📹 油管视频",
     "GEOSITE,spotify,   🎶 音乐媒体",
     "GEOSITE,telegram,  📲 电报消息",
@@ -115,11 +114,10 @@ function main(config) {
     "GEOSITE,private,   🇨🇳 国内直连",
     "GEOSITE,cn,        🇨🇳 国内直连",
 
+    "GEOIP,google,      🔗 默认代理,no-resolve",
     "GEOIP,telegram,    📲 电报消息,no-resolve",
     "GEOIP,private,     🇨🇳 国内直连,no-resolve",
     "GEOIP,CN,          🇨🇳 国内直连,no-resolve",
-
-
 
     // 漏网之鱼
     "MATCH, 🔗 默认代理",

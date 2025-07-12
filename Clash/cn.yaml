@@ -1,16 +1,11 @@
 payload:
   # 123 云盘相关域名
+  - DOMAIN-SUFFIX,123pan.com
+  - DOMAIN-SUFFIX,123pan.cn
+  - DOMAIN-SUFFIX,123684.com
+  - DOMAIN-SUFFIX,123865.com
+  - DOMAIN-SUFFIX,123912.com
   - DOMAIN-SUFFIX,123952.com
-
-  # 密码管理器
-  - DOMAIN-SUFFIX,bitwarden.com
-  
-  # 青柠起始页
-  - - DOMAIN-SUFFIX,limestart.cn
-  # 代理 赔钱 xlm aisu
-  - DOMAIN,dash.pqjc.site
-  - DOMAIN,v2.ixlmo.net
-  - DOMAIN,img.aisu.life
 
   # r18
   - DOMAIN,618016.xyz

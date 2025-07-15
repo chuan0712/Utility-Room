@@ -16,8 +16,7 @@ payload:
   - DOMAIN-SUFFIX,lanpw.com
   - DOMAIN-SUFFIX,lanpv.com
   - DOMAIN-SUFFIX,lanzv.com
-  - DOMAIN-WILDCARD,lanz*.com
-  - DOMAIN-WILDCARD,*.lanz*.com
+  - DOMAIN-KEYWORD,lanzou
 
   # r18
   - DOMAIN,618016.xyz

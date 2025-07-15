@@ -8,6 +8,16 @@ payload:
   - DOMAIN-SUFFIX,123952.com
   # 热铁盒账号
   - DOMAIN-SUFFIX,retiehe.com
+  - DOMAIN-SUFFIX,limestart.cn
+  #蓝奏云
+  - DOMAIN-SUFFIX,lanosso.com
+  - DOMAIN-SUFFIX,lanzn.com
+  - DOMAIN-SUFFIX,lanzog.com
+  - DOMAIN-SUFFIX,lanpw.com
+  - DOMAIN-SUFFIX,lanpv.com
+  - DOMAIN-SUFFIX,lanzv.com
+  - DOMAIN-WILDCARD,lanz*.com
+  - DOMAIN-WILDCARD,*.lanz*.com
 
   # r18
   - DOMAIN,618016.xyz

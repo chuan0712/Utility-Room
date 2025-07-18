@@ -5,65 +5,18 @@ payload:
   - DOMAIN-SUFFIX,123684.com
   - DOMAIN-SUFFIX,123865.com
   - DOMAIN-SUFFIX,123912.com
-  - DOMAIN-SUFFIX,123952.com
+  - IP-CIDR,203.107.60.254/32
   # 热铁盒账号
   - DOMAIN-SUFFIX,retiehe.com
   - DOMAIN-SUFFIX,limestart.cn
   #蓝奏云
-  - DOMAIN,lanzou.com
-  - DOMAIN,www.lanzou.com
-  - DOMAIN,up.woozooo.com
-  - DOMAIN,pc.woozooo.com
-  - DOMAIN,pan.lanzou.com
-  - DOMAIN-SUFFIX,lanzoub.com
-  - DOMAIN-SUFFIX,lanzoue.com
-  - DOMAIN-SUFFIX,lanzouf.com
-  - DOMAIN-SUFFIX,lanzouh.com
-  - DOMAIN-SUFFIX,lanzoui.com
-  - DOMAIN-SUFFIX,lanzouj.com
-  - DOMAIN-SUFFIX,lanzoul.com
-  - DOMAIN-SUFFIX,lanzoum.com
-  - DOMAIN-SUFFIX,lanzouo.com
-  - DOMAIN-SUFFIX,lanzoup.com
-  - DOMAIN-SUFFIX,lanzouq.com
-  - DOMAIN-SUFFIX,lanzout.com
-  - DOMAIN-SUFFIX,lanzouu.com
-  - DOMAIN-SUFFIX,lanzouv.com
-  - DOMAIN-SUFFIX,lanzouw.com
-  - DOMAIN-SUFFIX,lanzoux.com
-  - DOMAIN-SUFFIX,lanzouy.com
-  - DOMAIN-SUFFIX,lanzob.com
-  - DOMAIN-SUFFIX,lanzoe.com
-  - DOMAIN-SUFFIX,lanzof.com
-  - DOMAIN-SUFFIX,lanzoh.com
-  - DOMAIN-SUFFIX,lanzoi.com
-  - DOMAIN-SUFFIX,lanzoj.com
-  - DOMAIN-SUFFIX,lanzol.com
-  - DOMAIN-SUFFIX,lanzom.com
-  - DOMAIN-SUFFIX,lanzoo.com
-  - DOMAIN-SUFFIX,lanzop.com
-  - DOMAIN-SUFFIX,lanzoq.com
-  - DOMAIN-SUFFIX,lanzot.com
-  - DOMAIN-SUFFIX,lanzov.com
-  - DOMAIN-SUFFIX,lanzow.com
-  - DOMAIN-SUFFIX,lanzox.com
-  - DOMAIN-SUFFIX,lanzoy.com
-  - DOMAIN-SUFFIX,lanzb.com
-  - DOMAIN-SUFFIX,lanze.com
-  - DOMAIN-SUFFIX,lanzf.com
-  - DOMAIN-SUFFIX,lanzh.com
-  - DOMAIN-SUFFIX,lanzi.com
-  - DOMAIN-SUFFIX,lanzj.com
-  - DOMAIN-SUFFIX,lanzl.com
-  - DOMAIN-SUFFIX,lanzm.com
-  - DOMAIN-SUFFIX,lanzo.com
-  - DOMAIN-SUFFIX,lanzp.com
-  - DOMAIN-SUFFIX,lanzq.com
-  - DOMAIN-SUFFIX,lanzt.com
+  - DOMAIN-SUFFIX,lanosso.com
+  - DOMAIN-SUFFIX,lanzn.com
+  - DOMAIN-SUFFIX,lanzog.com
+  - DOMAIN-SUFFIX,lanpw.com
+  - DOMAIN-SUFFIX,lanpv.com
   - DOMAIN-SUFFIX,lanzv.com
-  - DOMAIN-SUFFIX,lanzw.com
-  - DOMAIN-SUFFIX,lanzx.com
-  - DOMAIN-SUFFIX,lanzy.com
+  - DOMAIN-REGEX,^.*\.lanz.*\.com$
   - IP-CIDR,47.98.88.98/32
   # r18
   - DOMAIN-REGEX,^618\d+\.xyz$

@@ -15,6 +15,7 @@ payload:
   - DOMAIN,up.woozooo.com
   - DOMAIN,pc.woozooo.com
   - DOMAIN,pan.lanzou.com
+  - DOMAIN,developer-oss.lanrar.com
   - DOMAIN-SUFFIX,lanzoub.com
   - DOMAIN-SUFFIX,lanzoue.com
   - DOMAIN-SUFFIX,lanzouf.com

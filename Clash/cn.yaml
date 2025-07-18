@@ -56,7 +56,7 @@ payload:
   - DOMAIN-SUFFIX,lanzj.com
   - DOMAIN-SUFFIX,lanzl.com
   - DOMAIN-SUFFIX,lanzm.com
-  - DOMAIN-SUFFIX,lanzo.com # 注意：这个 lanzo.com 和上面的 lanzoo.com 是不同的
+  - DOMAIN-SUFFIX,lanzo.com
   - DOMAIN-SUFFIX,lanzp.com
   - DOMAIN-SUFFIX,lanzq.com
   - DOMAIN-SUFFIX,lanzt.com

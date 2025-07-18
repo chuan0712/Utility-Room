@@ -15,7 +15,6 @@ payload:
   - DOMAIN,up.woozooo.com
   - DOMAIN,pc.woozooo.com
   - DOMAIN,pan.lanzou.com
-  - DOMAIN,developer-oss.lanrar.com
   - DOMAIN-SUFFIX,lanzoub.com
   - DOMAIN-SUFFIX,lanzoue.com
   - DOMAIN-SUFFIX,lanzouf.com
@@ -65,7 +64,7 @@ payload:
   - DOMAIN-SUFFIX,lanzw.com
   - DOMAIN-SUFFIX,lanzx.com
   - DOMAIN-SUFFIX,lanzy.com
-
+  - IP-CIDR,47.98.88.98/32
   # r18
   - DOMAIN-REGEX,^618\d+\.xyz$
 

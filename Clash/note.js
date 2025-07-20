@@ -4,15 +4,15 @@
 function main(config) {
 
   // 定义直连 DNS 和代理 DNS 的数组
-  const direct_dns = ["https://dns.alidns.com/dns-query", "https://doh.pub/dns-query"];
-  const proxy_dns  = ["https://cloudflare-dns.com/dns-query", "https://dns.google/dns-query"];
+  const direct_dns = ["quic://dns.alidns.com", "https://doh.pub/dns-query"];
+  const proxy_dns  = ["https://cloudflare-dns.com/dns-query#h3=true", "https://dns.google/dns-query"];
 
   // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,
-    "cache-algorithm": "arc",
-    "listen": "0.0.0.0:1053",
     "ipv6": true,
+    "listen": "0.0.0.0:1053",
+    "cache-algorithm": "arc",
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist", // 黑名单
@@ -38,15 +38,10 @@ function main(config) {
     },
   };
 
-  config["proxies"].push(
-    { name: "🇨🇳 国内直连", type: "direct", udp: true },
-    { name: "🚫 拒绝连接", type: "reject" }
-  );
-
   //建立常量
-  const common = ["🇨🇳 国内直连", "🚫 拒绝连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
+  const common = ["DIRECT","REJECT","🇭🇰 自动选择","🇭🇰 会话保持","🇸🇬 自动选择","🇸🇬 会话保持","🇺🇸 自动选择","🇺🇸 会话保持"];
   const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20};
-  const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
+  const lb     = {"include-all": true, type: "load-balance", strategy: "sticky-sessions"};
 
   //生成proxy-groups配置。
   config["proxy-groups"] = [
@@ -61,15 +56,14 @@ function main(config) {
     { name: "🎶 音乐媒体", type: "select", proxies: common },
 
 
-    // 自动选择组
+    // 自动选择
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
     { name: "🇸🇬 自动选择", ...auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" },
     { name: "🇺🇸 自动选择", ...auto, filter: "(?i)美|US|America|United States" },
-
-    // 负载均衡组（通常隐藏）
-    { name: "🇭🇰 负载均衡", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
-    { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
-    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
+    // 会话保持（通常隐藏）
+    { name: "🇭🇰 会话保持", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
+    { name: "🇸🇬 会话保持", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
+    { name: "🇺🇸 会话保持", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
 
   ];
 
@@ -96,11 +90,11 @@ function main(config) {
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
-    "RULE-SET,cn,      🇨🇳 国内直连",
-    "RULE-SET,Direct,  🇨🇳 国内直连",
+    "RULE-SET,cn,      DIRECT",
+    "RULE-SET,Direct,  DIRECT",
+    "RULE-SET,SteamCN, DIRECT",
     "RULE-SET,Bing,    🔍 微软必应",
     "RULE-SET,Gemini,  💬 智能助理",
-    "RULE-SET,SteamCN, 🇨🇳 国内直连",
 
 
     // 🌐 GEO 规则
@@ -111,13 +105,13 @@ function main(config) {
     "GEOSITE,spotify,   🎶 音乐媒体",
     "GEOSITE,telegram,  📲 电报消息",
     "GEOSITE,openai,    💬 智能助理",
-    "GEOSITE,private,   🇨🇳 国内直连",
-    "GEOSITE,cn,        🇨🇳 国内直连",
+    "GEOSITE,private,   DIRECT",
+    "GEOSITE,cn,        DIRECT",
 
     "GEOIP,google,      🔗 默认代理,no-resolve",
     "GEOIP,telegram,    📲 电报消息,no-resolve",
-    "GEOIP,private,     🇨🇳 国内直连,no-resolve",
-    "GEOIP,CN,          🇨🇳 国内直连,no-resolve",
+    "GEOIP,private,     DIRECT,no-resolve",
+    "GEOIP,CN,          DIRECT,no-resolve",
 
     // 漏网之鱼
     "MATCH, 🔗 默认代理",

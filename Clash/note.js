@@ -5,7 +5,7 @@ function main(config) {
 
   // 定义直连 DNS 和代理 DNS 的数组
   const direct_dns = ["quic://dns.alidns.com", "https://doh.pub/dns-query"];
-  const proxy_dns  = ["https://cloudflare-dns.com/dns-query#h3=true", "https://dns.google/dns-query"];
+  const proxy_dns  = ["quic://cloudflare-dns.com", "https://dns.google/dns-query"];
 
   // 覆盖 dns 配置
   config["dns"] = {
@@ -24,6 +24,14 @@ function main(config) {
     "direct-nameserver": direct_dns,
   };
 
+  // 覆盖 geodata 配置
+  config["geodata-mode"] = true;
+  config["geox-url"] = {
+    "geoip": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat",
+    "geosite": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite-lite.dat",
+    "mmdb": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb",
+    "asn": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+  };
 
   // 覆盖 sniffer 配置
   config["sniffer"] = {
@@ -55,7 +63,6 @@ function main(config) {
     { name: "💬 智能助理", type: "select", proxies: common },
     { name: "🎶 音乐媒体", type: "select", proxies: common },
 
-
     // 自动选择
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
     { name: "🇸🇬 自动选择", ...auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" },
@@ -64,7 +71,6 @@ function main(config) {
     { name: "🇭🇰 会话保持", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
     { name: "🇸🇬 会话保持", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
     { name: "🇺🇸 会话保持", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
-
   ];
 
 
@@ -98,7 +104,6 @@ function main(config) {
 
 
     // 🌐 GEO 规则
-
     "GEOSITE,microsoft, Ⓜ️ 微软服务",
     "GEOSITE,google,    🔗 默认代理",
     "GEOSITE,youtube,   📹 油管视频",

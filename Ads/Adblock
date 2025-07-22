@@ -6,10 +6,6 @@
 ! 知乎 (Zhihu)
 zhuanlan.zhihu.com##.ContentItem-actions
 
-! 百度网盘 (Baidu Netdisk)
-pan.baidu.com##.wp-s-header
-pan.baidu.com##.wp-s-aside-nav__main
-
 ! 蓝奏云
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
@@ -27,5 +23,14 @@ wenku.baidu.com##.have-opacity.chat-none.user-select-auto.small-app-right
 ！CSDN
 blog.csdn.net##.left-toolbox
 
-! Bing红点
+! 2025年7月23日 https://www.bing.com
 www.bing.com##.red-dot
+
+! 2025年7月23日 https://pan.baidu.com
+pan.baidu.com##.wp-s-aside-nav__main
+pan.baidu.com##.wp-s-header__vip-btn-tip
+pan.baidu.com##.nd-team-space.wp-s-header__right-item > .u-popover__reference-wrapper
+pan.baidu.com##.nd-sug-ad-item.wp-s-header__right-item.wp-s-header__nav-tooltip > .u-popover__reference-wrapper
+pan.baidu.com##.nd-sug-ad-item.wp-s-header__right-item.web-header-ad-item
+pan.baidu.com##.wp-s-header__right-item.margin-left-26.nd-chat-ai-btn
+pan.baidu.com##.nd-game-entry.wp-s-header__right-item.gameEntry > span > .u-popover__reference-wrapper

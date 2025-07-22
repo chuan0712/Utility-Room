@@ -3,9 +3,6 @@
 ! Homepage: (https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Ads/Adblock)
 ! 注意：部分规则可能需要根据实际情况进行调整。
 
-! 知乎 (Zhihu)
-zhuanlan.zhihu.com##.ContentItem-actions
-
 ! 蓝奏云
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
@@ -37,3 +34,8 @@ pan.baidu.com##.nd-game-entry.wp-s-header__right-item.gameEntry > span > .u-popo
 
 ! 2025年7月23日 https://www.123pan.com
 www.123pan.com##.mfy-main-layout__head
+
+! 2025年7月23日 https://zhuanlan.zhihu.com
+zhuanlan.zhihu.com##.ContentItem-actions
+zhuanlan.zhihu.com##.css-w2ahb5
+zhuanlan.zhihu.com###Popover6-toggle > .AppHeader-profileAvatarRedDot

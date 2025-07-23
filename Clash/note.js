@@ -110,13 +110,11 @@ function main(config) {
     "GEOSITE,spotify,    🎶 音乐媒体",
     "GEOSITE,telegram,   📲 电报消息",
     "GEOSITE,openai,     💬 智能助理",
-    "GEOSITE,cloudflare, 🔗 默认代理",
     "GEOSITE,private,    DIRECT",
     "GEOSITE,cn,         DIRECT",
 
     "GEOIP,google,      🔗 默认代理,no-resolve",
     "GEOIP,telegram,    📲 电报消息,no-resolve",
-    "GEOIP,cloudflare,  🔗 默认代理,no-resolve",
     "GEOIP,private,     DIRECT,no-resolve",
     "GEOIP,CN,          DIRECT,no-resolve",
 

@@ -104,17 +104,19 @@ function main(config) {
 
 
     // 🌐 GEO 规则
-    "GEOSITE,microsoft, Ⓜ️ 微软服务",
-    "GEOSITE,google,    🔗 默认代理",
-    "GEOSITE,youtube,   📹 油管视频",
-    "GEOSITE,spotify,   🎶 音乐媒体",
-    "GEOSITE,telegram,  📲 电报消息",
-    "GEOSITE,openai,    💬 智能助理",
-    "GEOSITE,private,   DIRECT",
-    "GEOSITE,cn,        DIRECT",
+    "GEOSITE,microsoft,  Ⓜ️ 微软服务",
+    "GEOSITE,google,     🔗 默认代理",
+    "GEOSITE,youtube,    📹 油管视频",
+    "GEOSITE,spotify,    🎶 音乐媒体",
+    "GEOSITE,telegram,   📲 电报消息",
+    "GEOSITE,openai,     💬 智能助理",
+    "GEOSITE,cloudflare, 🔗 默认代理",
+    "GEOSITE,private,    DIRECT",
+    "GEOSITE,cn,         DIRECT",
 
     "GEOIP,google,      🔗 默认代理,no-resolve",
     "GEOIP,telegram,    📲 电报消息,no-resolve",
+    "GEOIP,cloudflare,  🔗 默认代理,no-resolve",
     "GEOIP,private,     DIRECT,no-resolve",
     "GEOIP,CN,          DIRECT,no-resolve",
 

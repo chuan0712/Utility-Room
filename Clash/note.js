@@ -102,7 +102,7 @@ function main(config) {
     "GEOSITE,category-ads,    REJECT",
     "GEOSITE,category-ai-cn,  DIRECT",
     "GEOSITE,category-ai-!cn, 💬 智能助理",
-    "GEOSITE,google-play,     🔗 默认代理",
+    "GEOSITE,google,     🔗 默认代理",
     "GEOSITE,youtube,    📹 油管视频",
     "GEOSITE,spotify,    🎶 音乐媒体",
     "GEOSITE,telegram,   📲 电报消息",

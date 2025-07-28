@@ -60,8 +60,8 @@ function main(config) {
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
     { name: "🎶 音乐媒体", type: "select", proxies: common },
     { name: "📲 电报消息", type: "select", proxies: common },
-    { name: "📹 油管视频", type: "select", proxies: common },
     { name: "💬 智能助理", type: "select", proxies: common },
+    { name: "📹 油管视频", type: "select", proxies: common },
 
     // 自动选择
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
@@ -99,9 +99,10 @@ function main(config) {
     "GEOSITE,steam@cn,        DIRECT",
     "GEOSITE,googlefcm,       DIRECT",
     "GEOSITE,microsoft@cn,    DIRECT",
+    "GEOSITE,category-ads,    REJECT",
     "GEOSITE,category-ai-cn,  DIRECT",
     "GEOSITE,category-ai-!cn, 💬 智能助理",
-    "GEOSITE,google-play,     🔗 默认代理",
+    "GEOSITE,google,     🔗 默认代理",
     "GEOSITE,youtube,    📹 油管视频",
     "GEOSITE,spotify,    🎶 音乐媒体",
     "GEOSITE,telegram,   📲 电报消息",

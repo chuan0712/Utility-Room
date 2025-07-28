@@ -75,7 +75,7 @@ function main(config) {
 
 
   config["rule-providers"] = [
-    ["cn",        "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"]
+    ["cn", "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"]
   ].reduce((acc, [name, url, path]) => (
     acc[name] = {
       type: "http",
@@ -96,18 +96,19 @@ function main(config) {
 
     // 🌐 GEO 规则
     "GEOIP,private,DIRECT,no-resolve",
+    "GEOSITE,private,         DIRECT",
     "GEOSITE,steam@cn,        DIRECT",
     "GEOSITE,googlefcm,       DIRECT",
-    "GEOSITE,microsoft@cn,    DIRECT",
-    "GEOSITE,category-ads,    REJECT",
     "GEOSITE,category-ai-cn,  DIRECT",
     "GEOSITE,category-ai-!cn, 💬 智能助理",
     "GEOSITE,google,     🔗 默认代理",
+    "GEOSITE,bing,       🔗 默认代理",
+    "GEOSITE,github,     🔗 默认代理",
     "GEOSITE,youtube,    📹 油管视频",
     "GEOSITE,spotify,    🎶 音乐媒体",
     "GEOSITE,telegram,   📲 电报消息",
-    "GEOSITE,private,     DIRECT",
-    "GEOSITE,cn,          DIRECT",
+    "GEOSITE,microsoft,       DIRECT",
+    "GEOSITE,cn,              DIRECT",
 
     "GEOIP,telegram,    📲 电报消息,no-resolve",
     "GEOIP,CN,          DIRECT,no-resolve",

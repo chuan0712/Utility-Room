@@ -7,12 +7,6 @@
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
 
-！微软邮箱
-outlook.live.com##.DLvHz.YmHO2.ypzld.IjQyD.DVTER.iIsOF.lHRXq.kk1xx
-outlook.live.com##.LBktY > .GssDD
-
-！Gemini
-gemini.google.com##.ng-star-inserted.adv-upsell.buttons-container
 
 ！百度文库
 wenku.baidu.com##.have-opacity.chat-none.user-select-auto.small-app-right
@@ -22,6 +16,7 @@ blog.csdn.net##.left-toolbox
 
 ! 2025年7月23日 https://www.bing.com
 www.bing.com##.red-dot
+www.cn.bing.com##.red-dot
 
 ! 2025年7月23日 https://pan.baidu.com
 pan.baidu.com##.wp-s-aside-nav__main

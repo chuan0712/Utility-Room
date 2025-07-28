@@ -99,7 +99,6 @@ function main(config) {
     "GEOSITE,steam@cn,        DIRECT",
     "GEOSITE,googlefcm,       DIRECT",
     "GEOSITE,microsoft@cn,    DIRECT",
-    "GEOSITE,category-ads,    REJECT",
     "GEOSITE,category-ai-cn,  DIRECT",
     "GEOSITE,category-ai-!cn, 💬 智能助理",
     "GEOSITE,google-play,     🔗 默认代理",

@@ -3,6 +3,19 @@
 function main(config) {
 
 
+  // 覆盖 tun 配置
+  config["tun"] = {
+    "enable": true,
+    "stack": "mixed",
+    "dns-hijack": [
+      "any:53",
+      "tcp://any:53"
+    ],
+    "auto-route": true,
+    "auto-redirect": true,
+    "auto-detect-interface": true
+  };
+
   // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,

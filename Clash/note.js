@@ -1,27 +1,30 @@
 // https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/note.js
 
-// 程序入口
 function main(config) {
 
-  // 定义直连 DNS 和代理 DNS 的数组
-  const direct_dns = ["quic://dns.alidns.com", "https://doh.pub/dns-query"];
-  const proxy_dns  = ["https://cloudflare-dns.com/dns-query", "https://dns.google/dns-query"];
 
   // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,
     "ipv6": true,
+    "prefer-h3": true,
+    "listen": "0.0.0.0:1053",
+    "cache-algorithm": "arc",
+    "respect-rules":  false, //不遵守规则
     "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.1/16",
+    "fake-ip-filter-mode": "blacklist",
     "fake-ip-filter": [
       "*",
       "+.lan",
       "+.local",
+      "+.msftconnecttest.com",
+      "+.msftncsi.com",
       "+.market.xiaomi.com"
     ],
-    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
-    "proxy-server-nameserver": direct_dns,
-    "nameserver": proxy_dns, // 默认的域名解析服务器
-    "direct-nameserver": direct_dns,
+    "default-nameserver": ["tls://1223.5.5.5", "tls://119.29.29.29"],
+    "nameserver": ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"], // 默认的域名解析服务器
+    "direct-nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"], // 直连的域名解析服务器
   };
 
   // 覆盖 GeoX 配置

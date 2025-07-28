@@ -2,7 +2,6 @@
 
 function main(config) {
 
-
   // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,
@@ -22,18 +21,9 @@ function main(config) {
       "+.msftncsi.com",
       "+.market.xiaomi.com"
     ],
-    "default-nameserver": ["tls://1223.5.5.5", "tls://119.29.29.29"],
-    "nameserver": ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"], // 默认的域名解析服务器
-    "direct-nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"], // 直连的域名解析服务器
-  };
-
-  // 覆盖 GeoX 配置
-  config["geodata-mode"] = true;
-  config["geox-url"] = {
-    "geoip": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat",
-    "geosite": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat",
-    "mmdb": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb",
-    "asn": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+    "default-nameserver": ["tls://223.6.6.6", "tls://1.12.12.12"],
+    "nameserver": ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"],
+    "direct-nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"],
   };
 
   // 覆盖 sniffer 配置

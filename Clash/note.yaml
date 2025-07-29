@@ -1,0 +1,100 @@
+
+# https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/note.yaml
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+dns:
+  enable: true
+  ipv6: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  cache-algorithm: arc
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - "*"
+    - +.lan
+    - +.local
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - +.market.xiaomi.com
+  default-nameserver:
+    - tls://223.6.6.6
+    - tls://1.12.12.12
+  nameserver:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  direct-nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+
+
+x-anchors:
+  # Proxy Groups
+  common-proxies: &common [DIRECT, REJECT, 🇭🇰 自动选择, 🇭🇰 会话保持, 🇸🇬 自动选择, 🇸🇬 会话保持, 🇺🇸 自动选择, 🇺🇸 会话保持]
+  auto-select:    &auto   {type: url-test, include-all: true, interval: 300, tolerance: 20}
+  load-balance:   &lb     {type: load-balance, include-all: true, strategy: sticky-sessions, hidden: true}
+  # Rule Providers
+  classical-rule: &class  {type: http, behavior: classical, format: yaml, interval: 86400}
+
+proxy-groups:
+  - {name: ✈️ 节点总览, type: select, include-all: true}
+  - {name: 🔗 默认代理, type: select, proxies: *common}
+  - {name: 🎶 音乐媒体, type: select, proxies: *common}
+  - {name: 📲 电报消息, type: select, proxies: *common}
+  - {name: 💬 智能助理, type: select, proxies: *common}
+  - {name: 📹 油管视频, type: select, proxies: *common}
+
+  # 自动选择 (url-test)
+  - {name: 🇭🇰 自动选择, <<: *auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
+  - {name: 🇸🇬 自动选择, <<: *auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" }
+  - {name: 🇺🇸 自动选择, <<: *auto, filter: "(?i)美|🇺🇸|America|United States" }
+  # 会话保持 (load-balance)
+  - {name: 🇭🇰 会话保持, <<: *lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
+  - {name: 🇸🇬 会话保持, <<: *lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" }
+  - {name: 🇺🇸 会话保持, <<: *lb, filter: "(?i)美|🇺🇸|America|United States" }
+
+rule-providers:
+  cn:
+    <<: *class
+    path: ./rule/classical/cn.yaml
+    url: https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml
+
+rules:
+  # 📦 基础规则
+  - RULE-SET,cn,      DIRECT
+
+  # 🌐 GEO 规则
+  - GEOIP,private,DIRECT,no-resolve
+  - GEOSITE,private,         DIRECT
+  - GEOSITE,steam@cn,        DIRECT
+  - GEOSITE,googlefcm,       DIRECT
+  - GEOSITE,category-ai-cn,  DIRECT
+  - GEOSITE,category-ai-!cn, 💬 智能助理
+  - GEOSITE,google,     🔗 默认代理
+  - GEOSITE,bing,       🔗 默认代理
+  - GEOSITE,github,     🔗 默认代理
+  - GEOSITE,youtube,    📹 油管视频
+  - GEOSITE,spotify,    🎶 音乐媒体
+  - GEOSITE,telegram,   📲 电报消息
+  - GEOSITE,microsoft,       DIRECT
+  - GEOSITE,cn,              DIRECT
+  - GEOIP,telegram, 📲 电报消息,no-resolve
+  - GEOIP,CN,           DIRECT,no-resolve
+
+  # 漏网之鱼
+  - MATCH, 🔗 默认代理

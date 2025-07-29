@@ -2,14 +2,28 @@
 
 function main(config) {
 
-  // 覆盖 dns 配置
+
+  // 生成 sniffer 配置
+  config["sniffer"] = {
+    "enable": true,
+    "sniff": {
+      "HTTP": { "ports": [80, "8080-8880"], "override-destination": true},
+      "TLS":  { "ports": [443, 8443],},
+      "QUIC": { "ports": [443, 8443],}
+    },
+    "skip-domain": [
+      "Mijia Cloud",
+      "+.push.apple.com"
+    ],
+  };
+
+  // 生成 dns 配置
   config["dns"] = {
     "enable": true,
     "ipv6": true,
     "prefer-h3": true,
     "listen": "0.0.0.0:1053",
     "cache-algorithm": "arc",
-    "respect-rules":  false, //不遵守规则
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
     "fake-ip-filter-mode": "blacklist",
@@ -24,20 +38,6 @@ function main(config) {
     "default-nameserver": ["tls://223.6.6.6", "tls://1.12.12.12"],
     "nameserver": ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"],
     "direct-nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"],
-  };
-
-  // 覆盖 sniffer 配置
-  config["sniffer"] = {
-    "enable": true,
-    "sniff": {
-      "HTTP": { "ports": [80, "8080-8880"], "override-destination": true},
-      "TLS":  { "ports": [443, 8443],},
-      "QUIC": { "ports": [443, 8443],}
-    },
-    "skip-domain": [
-      "Mijia Cloud",
-      "+.push.apple.com"
-    ],
   };
 
 

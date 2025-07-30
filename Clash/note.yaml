@@ -35,21 +35,23 @@ dns:
     - tls://223.6.6.6
     - tls://1.12.12.12
   nameserver:
-    - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query#dns
+    - https://cloudflare-dns.com/dns-query#dns
   direct-nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query#dns
+    - https://dns.alidns.com/dns-query#dns
 
 
 
 x-anchors:
   # Proxy Groups
   common-proxies: &common [DIRECT, REJECT, 🇭🇰 自动选择, 🇭🇰 会话保持, 🇸🇬 自动选择, 🇸🇬 会话保持, 🇺🇸 自动选择, 🇺🇸 会话保持]
-  auto-select:    &auto   {type: url-test, include-all: true, interval: 300, tolerance: 20}
+  auto-select:    &auto   {type: url-test, include-all: true, interval: 300, tolerance: 50}
   load-balance:   &lb     {type: load-balance, include-all: true, strategy: sticky-sessions, hidden: true}
   # Rule Providers
-  classical-rule: &class  {type: http, behavior: classical, format: yaml, interval: 86400}
+  classical-rule: &class  {type: http, interval: 86400, behavior: classical, format: yaml}
+  domain-rule:    &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  ipcidr-rule:    &ip     {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 
 proxy-groups:
   - {name: ✈️ 节点总览, type: select, include-all: true}
@@ -68,33 +70,116 @@ proxy-groups:
   - {name: 🇸🇬 会话保持, <<: *lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" }
   - {name: 🇺🇸 会话保持, <<: *lb, filter: "(?i)美|🇺🇸|America|United States" }
 
-rule-providers:
-  cn:
-    <<: *class
-    path: ./rule/classical/cn.yaml
-    url: https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml
 
 rules:
   # 📦 基础规则
-  - RULE-SET,cn,      DIRECT
+  - RULE-SET,private_ip,           DIRECT,no-resolve
+  - RULE-SET,private_domain,       DIRECT
+  - RULE-SET,steam@cn_domain,      DIRECT
+  - RULE-SET,googlefcm_domain,     DIRECT
+  - RULE-SET,category-ai-cn_domain,DIRECT
+  - RULE-SET,category-ai-!cn_domain, 💬 智能助理
+  - RULE-SET,google_domain,        🔗 默认代理
+  - RULE-SET,bing_domain,          🔗 默认代理
+  - RULE-SET,github_domain,        🔗 默认代理
+  - RULE-SET,youtube_domain,       📹 油管视频
+  - RULE-SET,spotify_domain,       🎶 音乐媒体
+  - RULE-SET,telegram_domain,      📲 电报消息
+  - RULE-SET,microsoft_domain,     DIRECT
+  - RULE-SET,cn_domain,            DIRECT
 
-  # 🌐 GEO 规则
-  - GEOIP,private,DIRECT,no-resolve
-  - GEOSITE,private,         DIRECT
-  - GEOSITE,steam@cn,        DIRECT
-  - GEOSITE,googlefcm,       DIRECT
-  - GEOSITE,category-ai-cn,  DIRECT
-  - GEOSITE,category-ai-!cn, 💬 智能助理
-  - GEOSITE,google,     🔗 默认代理
-  - GEOSITE,bing,       🔗 默认代理
-  - GEOSITE,github,     🔗 默认代理
-  - GEOSITE,youtube,    📹 油管视频
-  - GEOSITE,spotify,    🎶 音乐媒体
-  - GEOSITE,telegram,   📲 电报消息
-  - GEOSITE,microsoft,       DIRECT
-  - GEOSITE,cn,              DIRECT
-  - GEOIP,telegram, 📲 电报消息,no-resolve
-  - GEOIP,CN,           DIRECT,no-resolve
+  - RULE-SET,telegram_ip,          📲 电报消息,no-resolve
+  - RULE-SET,google_ip,            🔗 默认代理,no-resolve
+  - RULE-SET,cn_ip,                DIRECT,no-resolve
 
   # 漏网之鱼
-  - MATCH, 🔗 默认代理
+  - MATCH,                         🔗 默认代理
+
+
+
+
+rule-providers:
+  # === Classical 规则 ===
+  #china:
+  #  <<: *class
+  #  path: ./ruleset/classical/cn.yaml
+  #  url: "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml"
+
+  # === Domain 规则 ===
+  # === 国内基础域名 ===
+  private_domain:
+    <<: *domain
+    path: ./ruleset/domain/private.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
+  cn_domain:
+    <<: *domain
+    path: ./ruleset/domain/cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+
+  # === 特定直连域名 ===
+  steam@cn_domain:
+    <<: *domain
+    path: ./ruleset/domain/steam@cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
+  googlefcm_domain: # 谷歌推送
+    <<: *domain
+    path: ./ruleset/domain/googlefcm.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs"
+  microsoft_domain:
+    <<: *domain
+    path: ./ruleset/domain/microsoft.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
+
+  # === AI 类域名 ===
+  category-ai-cn_domain: # 国内 AI
+    <<: *domain
+    path: ./ruleset/domain/category-ai-cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.mrs"
+  category-ai-!cn_domain: # 非国内 AI
+    <<: *domain
+    path: ./ruleset/domain/category-ai-!cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"
+
+  # === 国外常见服务域名 ===
+  bing_domain:
+    <<: *domain
+    path: ./ruleset/domain/bing.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"
+  github_domain:
+    <<: *domain
+    path: ./ruleset/domain/github.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
+  google_domain:
+    <<: *domain
+    path: ./ruleset/domain/google.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
+  spotify_domain:
+    <<: *domain
+    path: ./ruleset/domain/spotify.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
+  telegram_domain:
+    <<: *domain
+    path: ./ruleset/domain/telegram.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"
+  youtube_domain:
+    <<: *domain
+    path: ./ruleset/domain/youtube.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
+
+  # === IP 规则 ===
+  private_ip:
+    <<: *ip
+    path: ./ruleset/ipcidr/private.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
+  cn_ip:
+    <<: *ip
+    path: ./ruleset/ipcidr/cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+  google_ip:
+    <<: *ip
+    path: ./ruleset/ipcidr/google.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"
+  telegram_ip:
+    <<: *ip
+    path: ./ruleset/ipcidr/telegram.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"

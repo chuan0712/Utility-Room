@@ -31,13 +31,7 @@ dns:
     - +.msftncsi.com
     - +.market.xiaomi.com
   nameserver:
-    - https://8.8.8.8/dns-query
-    - https://1.1.1.1/dns-query
-  direct-nameserver:
-    - https://223.5.5.5/dns-query
-    - https://1.12.12.12/dns-query
-  proxy-server-nameserver:
-    - https://doh.pub/dns-query
+    - 182.92.122.107:1053
 
 
 x-anchors:
@@ -53,10 +47,9 @@ x-anchors:
 proxy-groups:
   - {name: ✈️ 节点总览, type: select, include-all: true}
   - {name: 🔗 默认代理, type: select, proxies: *common}
-  - {name: 🎶 音乐媒体, type: select, proxies: *common}
   - {name: 📲 电报消息, type: select, proxies: *common}
-  - {name: 💬 智能助理, type: select, proxies: *common}
   - {name: 📹 油管视频, type: select, proxies: *common}
+  - {name: 💬 智能助理, type: select, proxies: *common}
 
   # 自动选择 (url-test)
   - {name: 🇭🇰 自动选择, <<: *auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
@@ -70,23 +63,21 @@ proxy-groups:
 
 rules:
   # 📦 基础规则
-  - RULE-SET,private_ip,           DIRECT,no-resolve
   - RULE-SET,private_domain,       DIRECT
   - RULE-SET,steam@cn_domain,      DIRECT
   - RULE-SET,googlefcm_domain,     DIRECT
   - RULE-SET,category-ai-cn_domain,DIRECT
-  - RULE-SET,category-ai-!cn_domain, 💬 智能助理
-  - RULE-SET,google_domain,        🔗 默认代理
+  - RULE-SET,category-ai-!cn_domain,💬 智能助理
+  - RULE-SET,google-play_domain,   🔗 默认代理
   - RULE-SET,bing_domain,          🔗 默认代理
   - RULE-SET,github_domain,        🔗 默认代理
   - RULE-SET,youtube_domain,       📹 油管视频
-  - RULE-SET,spotify_domain,       🎶 音乐媒体
   - RULE-SET,telegram_domain,      📲 电报消息
   - RULE-SET,microsoft_domain,     DIRECT
   - RULE-SET,cn_domain,            DIRECT
 
   - RULE-SET,telegram_ip,          📲 电报消息,no-resolve
-  - RULE-SET,google_ip,            🔗 默认代理,no-resolve
+  - RULE-SET,private_ip,           DIRECT,no-resolve
   - RULE-SET,cn_ip,                DIRECT,no-resolve
 
   # 漏网之鱼
@@ -146,10 +137,10 @@ rule-providers:
     <<: *domain
     path: ./ruleset/domain/github.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
-  google_domain:
+  google-play_domain:
     <<: *domain
-    path: ./ruleset/domain/google.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
+    path: ./ruleset/domain/google-play.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-play.mrs"
   spotify_domain:
     <<: *domain
     path: ./ruleset/domain/spotify.mrs
@@ -172,10 +163,6 @@ rule-providers:
     <<: *ip
     path: ./ruleset/ipcidr/cn.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
-  google_ip:
-    <<: *ip
-    path: ./ruleset/ipcidr/google.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"
   telegram_ip:
     <<: *ip
     path: ./ruleset/ipcidr/telegram.mrs

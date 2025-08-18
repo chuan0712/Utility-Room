@@ -1,110 +1,135 @@
-// https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/note.js
+// https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/Note.js
 
+// 程序入口
 function main(config) {
 
+  // 定义直连 DNS 和代理 DNS 的数组
+  const direct_dns = ["https://dns.alidns.com/dns-query", "https://doh.pub/dns-query"];
+  const proxy_dns  = ["https://cloudflare-dns.com/dns-query", "https://dns.google/dns-query"];
 
-  // 生成 sniffer 配置
-  config["sniffer"] = {
-    "enable": true,
-    "sniff": {
-      "HTTP": { "ports": [80, "8080-8880"], "override-destination": true},
-      "TLS":  { "ports": [443, 8443],},
-      "QUIC": { "ports": [443, 8443],}
-    },
-    "skip-domain": [
-      "Mijia Cloud",
-      "+.push.apple.com"
-    ],
-  };
-
-  // 生成 dns 配置
+  // 覆盖 dns 配置
   config["dns"] = {
     "enable": true,
-    "ipv6": true,
-    "prefer-h3": true,
     "listen": "0.0.0.0:1053",
-    "cache-algorithm": "arc",
+    "ipv6": true,
     "enhanced-mode": "fake-ip",
     "fake-ip-range": "198.18.0.1/16",
-    "fake-ip-filter-mode": "blacklist",
-    "fake-ip-filter": [
-      "*",
-      "+.lan",
-      "+.local",
-      "+.msftconnecttest.com",
-      "+.msftncsi.com",
-      "+.market.xiaomi.com"
-    ],
-    "default-nameserver": ["tls://223.6.6.6", "tls://1.12.12.12"],
-    "nameserver": ["https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query"],
-    "direct-nameserver": ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"],
+    "fake-ip-filter-mode": "blacklist", // 黑名单
+    "fake-ip-filter": ["*","+.lan","+.local"],
+    "respect-rules": true, // 遵循规则
+    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+    "proxy-server-nameserver": direct_dns,
+    "nameserver-policy": {"+.arpa": ["10.0.0.1"]},
+    "nameserver": proxy_dns, // 默认的域名解析服务器
+    "direct-nameserver": direct_dns,
+    "direct-nameserver-follow-policy": true // 直连 DNS 是否遵循 nameserver-policy
   };
 
 
+  // 覆盖 sniffer 配置
+  config["sniffer"] = {
+    "enable": true,
+    "force-dns-mapping": true, // 强制使用 DNS 映射
+    "parse-pure-ip": true, // 是否解析纯 IP 地址
+    "override-destination": true, // 是否覆盖目标地址
+    "sniff": {
+      "TLS":  { "ports": [443, 8443], },
+      "HTTP": { "ports": [80, "8080-8880"], },
+      "QUIC": { "ports": [443, 8443], },
+    },
+  };
+
   //建立常量
-  const common = ["DIRECT","REJECT","🇭🇰 自动选择","🇭🇰 会话保持","🇸🇬 自动选择","🇸🇬 会话保持","🇺🇸 自动选择","🇺🇸 会话保持"];
-  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20};
-  const lb     = {"include-all": true, type: "load-balance", strategy: "sticky-sessions"};
+  const common = ["🇨🇳 国内直连", "🚫 拒绝连接", "🇭🇰 自动选择","🇭🇰 负载均衡","🇸🇬 自动选择","🇸🇬 负载均衡","🇺🇸 自动选择","🇺🇸 负载均衡"];
+  const auto   = {"include-all": true, type: "url-test", interval: 300, tolerance: 20, "max-failed-times": 3};
+  const lb     = {"include-all": true, type: "load-balance", strategy: "consistent-hashing"};
+
+  config["proxies"].push(
+    { name: "🇨🇳 国内直连", type: "direct", udp: true },
+    { name: "🚫 拒绝连接", type: "reject" }
+  );
+
+
 
   //生成proxy-groups配置。
   config["proxy-groups"] = [
     {name: "✈️ 节点总览", "include-all": true, type: "select"},
 
     { name: "🔗 默认代理", type: "select", proxies: common }, // 引用外部常量
-    { name: "🎶 音乐媒体", type: "select", proxies: common },
-    { name: "📲 电报消息", type: "select", proxies: common },
-    { name: "💬 智能助理", type: "select", proxies: common },
-    { name: "📹 油管视频", type: "select", proxies: common },
+    { name: "Bing", type: "select", proxies: common },
+    { name: "Google Gemini", type: "select", proxies: common },
+    { name: "OpenAI ChatGPT", type: "select", proxies: common },
+    { name: "GitHub", type: "select", proxies: common },
+    { name: "Microsoft", type: "select", proxies: common },
+    { name: "Telegram", type: "select", proxies: common },
+    { name: "YouTube", type: "select", proxies: common },
+    { name: "Spotify", type: "select", proxies: common },
+    { name: "SSH(22端口)", type: "select", proxies: common },
 
-    // 自动选择
+
+
+    // 自动选择组
     { name: "🇭🇰 自动选择", ...auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" },
     { name: "🇸🇬 自动选择", ...auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" },
-    { name: "🇺🇸 自动选择", ...auto, filter: "(?i)美|🇺🇸|America|United States" },
-    // 会话保持（通常隐藏）
-    { name: "🇭🇰 会话保持", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
-    { name: "🇸🇬 会话保持", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
-    { name: "🇺🇸 会话保持", ...lb, filter: "(?i)美|🇺🇸|America|United States", hidden: true },
+    { name: "🇺🇸 自动选择", ...auto, filter: "(?i)美|US|America|United States" },
+
+    // 负载均衡组（通常隐藏）
+    { name: "🇭🇰 负载均衡", ...lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong", hidden: true },
+    { name: "🇸🇬 负载均衡", ...lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore", hidden: true },
+    { name: "🇺🇸 负载均衡", ...lb, filter: "(?i)美|US|America|United States", hidden: true },
+
+    // 直连和拒绝组 (通常隐藏)
+    { name: "🇨🇳 国内直连", type: "select", proxies: ["DIRECT"], hidden: true },
+    { name: "🚫 拒绝连接", type: "select", proxies: ["REJECT"], hidden: true }
   ];
 
 
   config["rule-providers"] = [
-    ["cn", "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"]
+    ["cn",        "https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/cn.yaml", "cn.yaml"],
+    ["Direct",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml", "Direct.yaml"],
+    ["Bing",      "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml", "Bing.yaml"],
+    ["Gemini",    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml", "Gemini.yaml"],
+    ["SteamCN",   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml", "SteamCN.yaml"],
   ].reduce((acc, [name, url, path]) => (
     acc[name] = {
       type: "http",
       interval: 86400,
       behavior: "classical",
       format: "yaml",
-      url,
-      path: `./rule/classical/${path}`
-    }, acc
-  ), {});
+      url，
+      path: `./ruleset/classical/${path}`
+    }， acc
+  )， {});
 
 
 
   //生成rules配置。
   config["rules"] = [
     // 📦 基础规则
+    "DST-PORT,22,      SSH(22端口)"，         // 所有 ssh 连接默认端口
     "RULE-SET,cn,      DIRECT",
+    "RULE-SET,Direct,  DIRECT",
+    "RULE-SET,SteamCN, DIRECT",
+    "RULE-SET,Bing,    Bing"，
+    "RULE-SET,Gemini,  Google Gemini"，
+
 
     // 🌐 GEO 规则
-    "GEOIP,private,DIRECT,no-resolve",
-    "GEOSITE,private,         DIRECT",
-    "GEOSITE,steam@cn,        DIRECT",
-    "GEOSITE,googlefcm,       DIRECT",
-    "GEOSITE,category-ai-cn,  DIRECT",
-    "GEOSITE,category-ai-!cn, 💬 智能助理",
-    "GEOSITE,google,     🔗 默认代理",
-    "GEOSITE,bing,       🔗 默认代理",
-    "GEOSITE,github,     🔗 默认代理",
-    "GEOSITE,youtube,    📹 油管视频",
-    "GEOSITE,spotify,    🎶 音乐媒体",
-    "GEOSITE,telegram,   📲 电报消息",
-    "GEOSITE,microsoft,       DIRECT",
-    "GEOSITE,cn,              DIRECT",
 
-    "GEOIP,telegram,    📲 电报消息,no-resolve",
+    "GEOSITE,github,    GitHub"， // GitHub GEO 规则
+    "GEOSITE,microsoft, Microsoft"，
+    "GEOSITE,youtube,   YouTube"，
+    "GEOSITE,spotify,   Spotify",
+    "GEOSITE,telegram,  Telegram",
+    "GEOSITE,openai,    OpenAI ChatGPT",
+    "GEOSITE,private,   DIRECT",
+    "GEOSITE,cn,        DIRECT",
+
+    "GEOIP,telegram,    Telegram,no-resolve",
+    "GEOIP,private,     DIRECT,no-resolve",
     "GEOIP,CN,          DIRECT,no-resolve",
+
+
 
     // 漏网之鱼
     "MATCH, 🔗 默认代理",

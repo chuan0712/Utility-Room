@@ -26,6 +26,7 @@ sniffer:
       ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
+  force-domain": ["+.v2ex.com"]
   skip-domain: ["Mijia Cloud", "+.push.apple.com"]
   skip-src-address: ["192.168.0.3/32"]
   skip-dst-address: ["192.168.0.3/32"]

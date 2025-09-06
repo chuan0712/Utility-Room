@@ -93,7 +93,6 @@ rules:
   - RULE-SET,steam@cn_domain,      DIRECT
   - RULE-SET,googlefcm_domain,     DIRECT
   - RULE-SET,category-ai-!cn_domain,💬 智能助理
-  - RULE-SET,google-play_domain,   🔗 默认代理
   - RULE-SET,youtube_domain,       📹 油管视频
   - RULE-SET,tiktok_domain,        🎵 海外抖音
   - RULE-SET,telegram_domain,      📲 电报消息

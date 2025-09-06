@@ -92,12 +92,10 @@ rules:
   - RULE-SET,private_domain,       DIRECT
   - RULE-SET,steam@cn_domain,      DIRECT
   - RULE-SET,googlefcm_domain,     DIRECT
-  - RULE-SET,category-ai-cn_domain,DIRECT
   - RULE-SET,category-ai-!cn_domain,💬 智能助理
   - RULE-SET,google-play_domain,   🔗 默认代理
-  - RULE-SET,bing_domain,          🔗 默认代理
-  - RULE-SET,github_domain,        🔗 默认代理
   - RULE-SET,youtube_domain,       📹 油管视频
+  - RULE-SET,tiktok_domain,        🎵 海外抖音
   - RULE-SET,telegram_domain,      📲 电报消息
   - RULE-SET,microsoft_domain,     DIRECT
   - RULE-SET,cn_domain,            DIRECT
@@ -133,38 +131,16 @@ rule-providers:
     <<: *domain
     path: ./ruleset/domain/googlefcm.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs"
-  microsoft_domain:
+  microsoft@cn_domain:
     <<: *domain
-    path: ./ruleset/domain/microsoft.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
+    path: ./ruleset/domain/microsoft@cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs"
 
-  # === AI 类域名 ===
-  category-ai-cn_domain: # 国内 AI
-    <<: *domain
-    path: ./ruleset/domain/category-ai-cn.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.mrs"
-  category-ai-!cn_domain: # 非国内 AI
+  # === 国外常见服务域名 ===
+  category-ai-!cn_domain:
     <<: *domain
     path: ./ruleset/domain/category-ai-!cn.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"
-
-  # === 国外常见服务域名 ===
-  bing_domain:
-    <<: *domain
-    path: ./ruleset/domain/bing.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"
-  github_domain:
-    <<: *domain
-    path: ./ruleset/domain/github.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
-  google-play_domain:
-    <<: *domain
-    path: ./ruleset/domain/google-play.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-play.mrs"
-  spotify_domain:
-    <<: *domain
-    path: ./ruleset/domain/spotify.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
   telegram_domain:
     <<: *domain
     path: ./ruleset/domain/telegram.mrs
@@ -173,6 +149,10 @@ rule-providers:
     <<: *domain
     path: ./ruleset/domain/youtube.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
+  tiktok_domain:
+    <<: *domain
+    path: ./ruleset/domain/tiktok.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"
 
   # === IP 规则 ===
   private_ip:

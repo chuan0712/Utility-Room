@@ -76,6 +76,7 @@ proxy-groups:
   - {name: 📲 电报消息, type: select, proxies: *common}
   - {name: 📹 油管视频, type: select, proxies: *common}
   - {name: 💬 智能助理, type: select, proxies: *common}
+  - {name: 🎵 海外抖音, type: select, proxies: *common}
 
   # 自动选择 (url-test)
   - {name: 🇭🇰 自动选择, <<: *auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
@@ -92,11 +93,11 @@ rules:
   - RULE-SET,private_domain,       DIRECT
   - RULE-SET,steam@cn_domain,      DIRECT
   - RULE-SET,googlefcm_domain,     DIRECT
+  - RULE-SET,microsoft@cn_domain,  DIRECT
   - RULE-SET,category-ai-!cn_domain,💬 智能助理
   - RULE-SET,youtube_domain,       📹 油管视频
   - RULE-SET,tiktok_domain,        🎵 海外抖音
   - RULE-SET,telegram_domain,      📲 电报消息
-  - RULE-SET,microsoft_domain,     DIRECT
   - RULE-SET,cn_domain,            DIRECT
 
   - RULE-SET,telegram_ip,          📲 电报消息,no-resolve

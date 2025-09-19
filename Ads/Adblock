@@ -7,16 +7,11 @@
 lanzouj.com##div#f_right
 lanzouj.com##div.if_top
 
-
 ！百度文库
 wenku.baidu.com##.have-opacity.chat-none.user-select-auto.small-app-right
 
 ！CSDN
 blog.csdn.net##.left-toolbox
-
-! 2025年7月23日 https://www.bing.com
-www.bing.com##.red-dot
-www.cn.bing.com##.red-dot
 
 ! 2025年7月23日 https://pan.baidu.com
 pan.baidu.com##.wp-s-aside-nav__main
@@ -34,3 +29,27 @@ www.123pan.com##.mfy-main-layout__head
 zhuanlan.zhihu.com##.ContentItem-actions
 zhuanlan.zhihu.com##.css-w2ahb5
 zhuanlan.zhihu.com###Popover6-toggle > .AppHeader-profileAvatarRedDot
+
+! 2025年9月3日 https://cloud.tencent.com
+cloud.tencent.com###community-top-header-product-container
+
+! 2025年9月17日 https://tieba.baidu.com
+tieba.baidu.com##.tieba-custom-pass-login
+
+! 2025年9月19日 https://www.bing.com 和 https://cn.bing.com
+www.bing.com##.red-dot
+www.bing.com##.b_clickarea
+www.bing.com##.sw_mktsw
+www.bing.com###vs_cont
+cn.bing.com##.red-dot
+cn.bing.com##.b_clickarea
+cn.bing.com##.sw_mktsw
+cn.bing.com###vs_cont
+
+! 2025年9月3日 https://cloud.tencent.com
+cloud.tencent.com###community-top-header-product-container
+
+! 2025年9月17日 https://tieba.baidu.com
+tieba.baidu.com##.tieba-custom-pass-login
+
+

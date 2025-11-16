@@ -1,46 +1,5 @@
 # https://raw.githubusercontent.com/chuan0712/Utility-Room/main/Clash/note.yaml
 
-mixed-port: 7890
-ipv6: true
-allow-lan: true
-unified-delay: true
-tcp-concurrent: true
-external-controller: 127.0.0.1:9090
-external-ui: ui
-external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip
-
-find-process-mode: strict
-global-client-fingerprint: chrome
-
-profile:
-  store-selected: true
-  store-fake-ip: true
-
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  force-domain": ["+.v2ex.com"]
-  skip-domain: ["Mijia Cloud", "+.push.apple.com"]
-  skip-src-address: ["192.168.0.3/32"]
-  skip-dst-address: ["192.168.0.3/32"]
-
-tun:
-  enable: true
-  stack: mixed
-  dns-hijack:
-    - "any:53"
-    - "tcp://any:53"
-  auto-route: true
-  auto-redirect: true
-  auto-detect-interface: true
-
 dns:
   enable: true
   ipv6: true
@@ -58,49 +17,43 @@ dns:
     - +.msftncsi.com
     - +.market.xiaomi.com
   nameserver:
-    - 182.92.122.107:1053
+    - https://dns.7773000.xyz/api/dns-query
 
 
 x-anchors:
-  # Proxy Groups
-  common-proxies: &common [DIRECT, REJECT, 🇭🇰 自动选择, 🇭🇰 会话保持, 🇸🇬 自动选择, 🇸🇬 会话保持, 🇺🇸 自动选择, 🇺🇸 会话保持]
   auto-select:    &auto   {type: url-test, include-all: true, interval: 300, tolerance: 50}
-  load-balance:   &lb     {type: load-balance, include-all: true, strategy: sticky-sessions, hidden: true}
   # Rule Providers
   domain-rule:    &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   ipcidr-rule:    &ip     {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 
 proxy-groups:
   - {name: ✈️ 节点总览, type: select, include-all: true}
-  - {name: 🔗 默认代理, type: select, proxies: *common}
-  - {name: 📲 电报消息, type: select, proxies: *common}
-  - {name: 📹 油管视频, type: select, proxies: *common}
-  - {name: 💬 智能助理, type: select, proxies: *common}
-  - {name: 🎵 海外抖音, type: select, proxies: *common}
+  - {name: 🔗 默认代理, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇸🇬 狮城, 🇺🇸 美国] }
+  - {name: ☁️ 微软云盘, type: select, proxies: [DIRECT, 🇭🇰 香港, 🇸🇬 狮城, 🇺🇸 美国] }
 
-  # 自动选择 (url-test)
-  - {name: 🇭🇰 自动选择, <<: *auto, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
-  - {name: 🇸🇬 自动选择, <<: *auto, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" }
-  - {name: 🇺🇸 自动选择, <<: *auto, filter: "(?i)美|🇺🇸|America|United States" }
-  # 会话保持 (load-balance)
-  - {name: 🇭🇰 会话保持, <<: *lb, filter: "(?i)港|🇭🇰|HongKong|Hong Kong" }
-  - {name: 🇸🇬 会话保持, <<: *lb, filter: "(?i)新加坡|坡|狮城|🇸🇬|Singapore" }
-  - {name: 🇺🇸 会话保持, <<: *lb, filter: "(?i)美|🇺🇸|America|United States" }
+  - {name: 🇭🇰 香港, type: url-test, include-all: true, filter: "(?i)港|HK|Hong|🇭🇰" }
+  - {name: 🇸🇬 狮城, type: url-test, include-all: true, filter: "(?i)新|SG|Singapore|🇸🇬" }
+  - {name: 🇺🇸 美国, type: url-test, include-all: true, filter: "(?i)美|US|United States|🇺🇸" }
 
 
 rules:
   # 📦 基础规则
-  - RULE-SET,private_domain,       DIRECT
-  - RULE-SET,steam@cn_domain,      DIRECT
-  - RULE-SET,googlefcm_domain,     DIRECT
-  - RULE-SET,microsoft@cn_domain,  DIRECT
-  - RULE-SET,category-ai-!cn_domain,💬 智能助理
-  - RULE-SET,youtube_domain,       📹 油管视频
-  - RULE-SET,tiktok_domain,        🎵 海外抖音
-  - RULE-SET,telegram_domain,      📲 电报消息
-  - RULE-SET,cn_domain,            DIRECT
+  - DOMAIN-SUFFIX,googleapis.cn,🔗 默认代理
+  - RULE-SET,onedrive_domain,   ☁️ 微软云盘
+  - RULE-SET,private_domain,         DIRECT
+  - RULE-SET,games@cn_domain,        DIRECT
+  - RULE-SET,googlefcm_domain,       DIRECT
+  - RULE-SET,microsoft@cn_domain,    DIRECT
+  - RULE-SET,category-ai-!cn_domain, 🇺🇸 美国
+  - RULE-SET,youtube_domain,         🇺🇸 美国
+  - RULE-SET,tiktok_domain,          🇺🇸 美国
+  - RULE-SET,twitter_domain,         🇺🇸 美国
+  - RULE-SET,github_domain,          🇸🇬 狮城
+  - RULE-SET,telegram_domain,        🇸🇬 狮城
+  - RULE-SET,cn_domain,              DIRECT
 
-  - RULE-SET,telegram_ip,          📲 电报消息,no-resolve
+  - RULE-SET,telegram_ip,          🇸🇬 狮城,no-resolve
+  - RULE-SET,twitter_ip,           🇺🇸 美国,no-resolve
   - RULE-SET,private_ip,           DIRECT,no-resolve
   - RULE-SET,cn_ip,                DIRECT,no-resolve
 
@@ -123,11 +76,11 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
 
   # === 特定直连域名 ===
-  steam@cn_domain:
+  games@cn_domain:
     <<: *domain
-    path: ./ruleset/domain/steam@cn.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
-  googlefcm_domain: # 谷歌推送
+    path: ./ruleset/domain/games@cn.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn@cn.mrs"
+  googlefcm_domain:
     <<: *domain
     path: ./ruleset/domain/googlefcm.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs"
@@ -135,6 +88,10 @@ rule-providers:
     <<: *domain
     path: ./ruleset/domain/microsoft@cn.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs"
+  onedrive_domain:
+    <<: *domain
+    path: ./ruleset/domain/onedrive.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"
 
   # === 国外常见服务域名 ===
   category-ai-!cn_domain:
@@ -153,6 +110,14 @@ rule-providers:
     <<: *domain
     path: ./ruleset/domain/tiktok.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"
+  twitter_domain:
+    <<: *domain
+    path: ./rules/domain/twitter.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs"
+  github_domain:
+    <<: *domain
+    path: ./rules/domain/github.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
 
   # === IP 规则 ===
   private_ip:
@@ -167,3 +132,7 @@ rule-providers:
     <<: *ip
     path: ./ruleset/ipcidr/telegram.mrs
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"
+  twitter_ip:
+    <<: *ip
+    path: ./ruleset/ipcidr/twitter.mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"

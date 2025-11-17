@@ -80,7 +80,7 @@ rule-providers:
   games@cn_domain:
     <<: *domain
     path: ./ruleset/domain/games@cn.mrs
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn@cn.mrs"
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games@cn.mrs"
   googlefcm_domain:
     <<: *domain
     path: ./ruleset/domain/googlefcm.mrs

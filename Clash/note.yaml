@@ -53,10 +53,10 @@ rules:
   - DOMAIN-SUFFIX,7773000.xyz,       DIRECT
   - RULE-SET,cn_domain,              DIRECT
 
-  - RULE-SET,telegram_ip,          🇸🇬 狮城,
-  - RULE-SET,twitter_ip,           🇺🇸 美国,
-  - RULE-SET,private_ip,           DIRECT,
-  - RULE-SET,cn_ip,                DIRECT,
+  - RULE-SET,telegram_ip,          🇸🇬 狮城
+  - RULE-SET,twitter_ip,           🇺🇸 美国
+  - RULE-SET,private_ip,           DIRECT
+  - RULE-SET,cn_ip,                DIRECT
 
   # 漏网之鱼
   - MATCH,                         🔗 默认代理
